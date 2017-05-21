@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Profile>Reach</Profile>
+  <Profile>HiDef</Profile>
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/David Tu/Documents/Dimensional Beats/Dimensional-Beats/DimensionalBeats/DimensionalBeats/Content/world.png</File>
+    <File>C:/Users/doshi/Game/DimensionalBeats/DimensionalBeats/Content/Temp.tmx</File>
+    <File>C:/Users/doshi/Game/DimensionalBeats/DimensionalBeats/Content/world.png</File>
   </SourceFiles>
 </SourceFileCollection>

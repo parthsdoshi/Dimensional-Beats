@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/doshi/Game/DimensionalBeats/DimensionalBeats/Content/Temp.tmx</SourceFile>
+  <SourceTime>2017-05-21T16:13:11.8147525-07:00</SourceTime>
+  <DestFile>C:/Users/doshi/Game/DimensionalBeats/DimensionalBeats/Content/bin/DesktopGL/Temp.xnb</DestFile>
+  <DestTime>2017-05-21T16:14:24.6174885-07:00</DestTime>
+  <Importer>TiledMapImporter</Importer>
+  <ImporterTime>2017-05-21T15:56:01.8903652-07:00</ImporterTime>
+  <Processor>TiledMapProcessor</Processor>
+  <ProcessorTime>2017-05-21T15:56:01.8903652-07:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
