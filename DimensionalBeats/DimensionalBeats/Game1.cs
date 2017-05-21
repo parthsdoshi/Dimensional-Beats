@@ -8,9 +8,10 @@ namespace DimensionalBeats
     public class Game1 : Core
     {
         
-        public Game1() : base()
+        public Game1() : base( 1280, 720, false, true, "Dimensional Beats", "Content" )
         {
-            
+            IsMouseVisible = true;
+            Window.AllowUserResizing = true;
         }
 
         /// <summary>
@@ -24,6 +25,8 @@ namespace DimensionalBeats
             // TODO: Add your initialization logic here
 
             base.Initialize();
+
+            // Scene.setDefaultDesignResolution()
         }
     }
 }
