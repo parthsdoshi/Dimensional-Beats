@@ -36,3 +36,22 @@ C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug
 C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.csprojResolveAssemblyReference.cache
 C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.exe
 C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.pdb
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\DimensionalBeats.exe
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\DimensionalBeats.pdb
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\Nez.dll
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\Nez.pdb
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.csprojResolveAssemblyReference.cache
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.exe
+C:\Users\David Tu\Documents\Dimensional Beats\Dimensional-Beats\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.pdb
