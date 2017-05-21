@@ -1,0 +1,38 @@
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\DimensionalBeats.exe
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\DimensionalBeats.pdb
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\Nez.dll
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\Nez.pdb
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.csprojResolveAssemblyReference.cache
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.exe
+c:\users\doshi\documents\visual studio 2017\Projects\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.pdb
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\DimensionalBeats.exe
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\DimensionalBeats.pdb
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\Nez.dll
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\bin\DesktopGL\AnyCPU\Debug\Nez.pdb
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.csprojResolveAssemblyReference.cache
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.exe
+C:\Users\doshi\Game\DimensionalBeats\DimensionalBeats\obj\Debug\DimensionalBeats.pdb
