@@ -46,6 +46,7 @@
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Entities\CookieCutterEntity.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Helper\PhysicsHandler.cs" />
     <Compile Include="Helper\InputHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

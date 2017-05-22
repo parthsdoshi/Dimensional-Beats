@@ -1,6 +1,6 @@
 ﻿using System;
 using Nez;
-using DimensionalBeats.Helpers;
+using DimensionalBeats.Helper;
 using Microsoft.Xna.Framework;
 using Nez.Sprites;
 using DimensionalBeats.Controllers;
@@ -28,27 +28,6 @@ namespace DimensionalBeats.Entities {
 
         public override void update() {
             base.update();
-
-            switch (inputHandler.getMovement()) {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case -1:
-                    break;
-            }
         }
 
     }

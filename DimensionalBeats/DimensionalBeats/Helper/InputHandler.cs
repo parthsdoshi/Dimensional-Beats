@@ -2,7 +2,7 @@
 using System;
 using Nez;
 
-namespace DimensionalBeats.Helpers{
+namespace DimensionalBeats.Helper{
     class InputHandler {
 
         public InputHandler() {
@@ -13,17 +13,15 @@ namespace DimensionalBeats.Helpers{
             KeyboardState keyboardState = Input.currentKeyboardState;
             KeyboardState previousState = Input.previousKeyboardState;
 
-            if (isLeft(previousState) ^ isLeft(keyboardState)) {
-                if (isUp(previousState) || isUp(keyboardState))
-                    return 7;
-                else if (isDown(previousState) || isDown(keyboardState))
-                    return 5;
-            } else if (isRight(previousState) ^ isRight(keyboardState)) {
-                if (isUp(previousState) || isUp(keyboardState))
-                    return 1;
-                else if (isDown(previousState) || isDown(keyboardState))
-                    return 3;
-            }
+            if ((isLeft(previousState) && isUp(keyboardState)) ||
+                (isLeft(keyboardState) && isUp(previousState))) return 7;
+            if ((isLeft(previousState) && isDown(keyboardState)) &&
+                (isLeft(keyboardState) && isDown(previousState))) return 5;
+            if ((isRight(previousState) && isUp(keyboardState)) ||
+                (isRight(keyboardState) && isUp(previousState))) return 1;
+            if ((isRight(previousState) && isDown(keyboardState)) &&
+                (isRight(keyboardState) && isDown(previousState))) return 3;
+
             if (isLeft(keyboardState)) return 6;
             if (isRight(keyboardState)) return 2;
             if (isUp(keyboardState)) return 0;

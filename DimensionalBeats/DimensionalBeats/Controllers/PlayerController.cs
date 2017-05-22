@@ -1,11 +1,14 @@
 ﻿using Nez;
-using DimensionalBeats.Helpers;
+using DimensionalBeats.Helper;
 using Nez.Tiled;
 using Microsoft.Xna.Framework;
 
 namespace DimensionalBeats.Controllers {
     class PlayerController : Controller, IUpdatable {
+
         private InputHandler _inputHandler;
+        private PhysicsHandler physicsHandler;
+
         private BoxCollider _boxCollider;
         private TiledMapMover _mover;
         private TiledMapMover.CollisionState _collisionState;
@@ -13,6 +16,7 @@ namespace DimensionalBeats.Controllers {
         public PlayerController() : base() {
             _inputHandler = new InputHandler();
             _collisionState = new TiledMapMover.CollisionState();
+            physicsHandler = new PhysicsHandler(_collisionState, 10f, .3f);
         }
 
         public override void onAddedToEntity() {
@@ -23,10 +27,10 @@ namespace DimensionalBeats.Controllers {
 
         public void update() {
             //throw new NotImplementedException();
+            
 
-            _mover.move(new Vector2(20, 0) * Time.deltaTime, _boxCollider, _collisionState);
-
-
+            //Use physics handler & TiledMapMover to calculate movement
+            _mover.move(physicsHandler.calculateMovement(_inputHandler.getMovement()), _boxCollider, _collisionState);
         }
     }
 }

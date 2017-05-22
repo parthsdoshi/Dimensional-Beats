@@ -41,11 +41,6 @@ namespace DimensionalBeats
         protected override void Update(GameTime gameTime) {
             base.Update(gameTime);
 
-            if(gameTime.TotalGameTime.Seconds > 10 && !changeScenes) {
-                changeScene();
-                changeScenes = true;
-            }
-            Debug.log(scene.entities.count);
         }
 
         private void changeScene() {
