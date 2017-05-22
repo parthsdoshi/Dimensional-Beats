@@ -9,6 +9,10 @@ namespace DimensionalBeats.Scenes
 {
     class TestScene : Scene
     {
+        public TestScene() : base() {
+            initialize();
+        }
+
         public override void initialize()
         {
             clearColor = Color.CornflowerBlue;
@@ -30,6 +34,8 @@ namespace DimensionalBeats.Scenes
             player.addComponent<BoxCollider>(new BoxCollider(0, 0, player.getComponent<Sprite>().width, player.getComponent<Sprite>().height));
 
             this.addEntity<Entity>(player);
+
+            Debug.log(this.entities.count.ToString());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Nez;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 
 namespace DimensionalBeats
 {
@@ -9,6 +10,8 @@ namespace DimensionalBeats
     {
         public const short DEFAULT_ART_WIDTH = 1280;
         public const short DEFAULT_ART_HEIGHT = 720;
+
+        private bool changeScenes = false;
         
         public Game1() : base( DEFAULT_ART_WIDTH, DEFAULT_ART_HEIGHT, false, true, "Dimensional Beats", "Content" )
         {
@@ -33,6 +36,21 @@ namespace DimensionalBeats
 
             Scene.setDefaultDesignResolution(DEFAULT_ART_WIDTH, DEFAULT_ART_HEIGHT, Scene.SceneResolutionPolicy.ShowAll);
             scene = new Scenes.TestScene();
+        }
+
+        protected override void Update(GameTime gameTime) {
+            base.Update(gameTime);
+
+            if(gameTime.TotalGameTime.Seconds > 10 && !changeScenes) {
+                changeScene();
+                changeScenes = true;
+            }
+            Debug.log(scene.entities.count);
+        }
+
+        private void changeScene() {
+            scene = new Scenes.TestScene2();
+            Debug.log("Changed Scene");
         }
     }
 }
