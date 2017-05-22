@@ -7,11 +7,14 @@ namespace DimensionalBeats
     /// </summary>
     public class Game1 : Core
     {
+        public const short DEFAULT_ART_WIDTH = 1280;
+        public const short DEFAULT_ART_HEIGHT = 720;
         
-        public Game1() : base( 1280, 720, false, true, "Dimensional Beats", "Content" )
+        public Game1() : base( DEFAULT_ART_WIDTH, DEFAULT_ART_HEIGHT, false, true, "Dimensional Beats", "Content" )
         {
             IsMouseVisible = true;
             Window.AllowUserResizing = true;
+            // Window.IsBorderless = true;
         }
 
         /// <summary>
@@ -26,7 +29,10 @@ namespace DimensionalBeats
 
             base.Initialize();
 
-            // Scene.setDefaultDesignResolution()
+            
+
+            Scene.setDefaultDesignResolution(DEFAULT_ART_WIDTH, DEFAULT_ART_HEIGHT, Scene.SceneResolutionPolicy.ShowAll);
+            scene = new Scenes.TestScene();
         }
     }
 }
