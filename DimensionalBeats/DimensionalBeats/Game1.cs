@@ -8,12 +8,13 @@ namespace DimensionalBeats
     /// </summary>
     public class Game1 : Core
     {
-        public const short DEFAULT_ART_WIDTH = 1280;
-        public const short DEFAULT_ART_HEIGHT = 720;
-
-        private bool changeScenes = false;
+        public const short DEFAULT_ART_WIDTH = 1280/2;
+        public const short DEFAULT_ART_HEIGHT = 720/2;
+        public const short DEFAULT_SCALE = 2;
+        public const short TILE_SIZE = 16;
         
-        public Game1() : base( DEFAULT_ART_WIDTH, DEFAULT_ART_HEIGHT, false, true, "Dimensional Beats", "Content" )
+        //Resolution of the window
+        public Game1() : base( DEFAULT_ART_WIDTH * DEFAULT_SCALE, DEFAULT_ART_HEIGHT * DEFAULT_SCALE, false, true, "Dimensional Beats", "Content" )
         {
             IsMouseVisible = true;
             Window.AllowUserResizing = true;
@@ -34,6 +35,7 @@ namespace DimensionalBeats
 
             
 
+            //Resolution of the game
             Scene.setDefaultDesignResolution(DEFAULT_ART_WIDTH, DEFAULT_ART_HEIGHT, Scene.SceneResolutionPolicy.ShowAll);
             scene = new Scenes.TestScene();
         }

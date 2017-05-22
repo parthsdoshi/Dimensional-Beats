@@ -57,3 +57,32 @@
 /processorParam:TextureFormat=Color
 /build:Temp/world.png
 
+#begin Temp/TestingSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Temp/TestingSpriteSheet.png
+
+#begin Temp/TestingWorld.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:Temp/TestingWorld.tmx
+
+#begin Temp/TestingSprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Temp/TestingSprite.png
+

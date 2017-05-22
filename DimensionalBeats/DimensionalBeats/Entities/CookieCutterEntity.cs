@@ -11,7 +11,7 @@ namespace DimensionalBeats.Entities {
         private InputHandler inputHandler;
 
         public CookieCutterEntity(Vector2 position) : base() {
-            addComponent<Sprite>(new PrototypeSprite(32, 32)).setColor(Color.Red);
+            addComponent<Sprite>(new PrototypeSprite(16, 16)).setColor(Color.Red);
             this.position = position;
 
             inputHandler = new InputHandler();
@@ -28,6 +28,7 @@ namespace DimensionalBeats.Entities {
 
         public override void update() {
             base.update();
+            //Debug.log("X: " + position.X + " Y: " + position.Y);
         }
 
     }
