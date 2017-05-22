@@ -1,22 +1,18 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Nez;
 
-namespace Game1.Helpers{
+namespace DimensionalBeats.Helpers{
     class InputHandler {
-        KeyboardState keyboardState;
-        KeyboardState previousState;
 
         public InputHandler() {
 
         }
 
         public int getMovement() {
-            keyboardState = Keyboard.GetState();
+            KeyboardState keyboardState = Input.currentKeyboardState;
+            KeyboardState previousState = Input.previousKeyboardState;
+
             if (isLeft(previousState) ^ isLeft(keyboardState)) {
                 if (isUp(previousState) || isUp(keyboardState))
                     return 7;
