@@ -12,6 +12,7 @@ namespace DimensionalBeats.Helper{
         public int getMovement() {
             KeyboardState keyboardState = Input.currentKeyboardState;
             KeyboardState previousState = Input.previousKeyboardState;
+            Keys[] keyPressed = keyboardState.GetPressedKeys();
 
             if ((isLeft(previousState) && isUp(keyboardState)) ||
                 (isLeft(keyboardState) && isUp(previousState))) return 7;
@@ -27,6 +28,13 @@ namespace DimensionalBeats.Helper{
             if (isUp(keyboardState)) return 0;
             if (isDown(keyboardState)) return 4;
 
+
+            return -1;
+        }
+
+        public int getEvent() {
+            //Jump event
+            if (Input.isKeyPressed(Keys.W)) return 0;
 
             return -1;
         }
@@ -53,6 +61,10 @@ namespace DimensionalBeats.Helper{
             if (k.IsKeyDown(Keys.S))
                 return true;
             return false;
+        }
+
+        public Boolean justPressed(Keys k) {
+            return Input.isKeyPressed(k);
         }
     }
 }

@@ -5,14 +5,14 @@ using Nez.Tiled;
 
 namespace DimensionalBeats.Helper {
     class PhysicsHandler {
-        private const float _GRAVITY = 4.9f;
+        private const float _GRAVITY = 9.8f;
 
         private float _mass;
         private float _friction;
 
-        public float jumpVelocity { get; set; }
-        public float jumpDelay { get; set; }
-        public float jumpTimer { get; set; }
+        public float jumpHeight { get; set; }
+        //public float jumpDelay { get; set; }
+        //public float jumpTimer { get; set; }
         public float maxVelocity { get; set; }
         public float moveSpeed { get; set; }
         private bool _isMovingLeft;
@@ -25,17 +25,17 @@ namespace DimensionalBeats.Helper {
 
         private TiledMapMover.CollisionState _collisionState;
 
-        public PhysicsHandler(TiledMapMover.CollisionState collisionState, float mass, float friction = .1f) {
+        public PhysicsHandler(TiledMapMover.CollisionState collisionState, float mass, float friction = .3f) {
             this._collisionState = collisionState;
             this._mass = mass;
             this._friction = friction;
 
             //Default values (units in per Tile)
-            jumpVelocity = 2.5f;
-            jumpTimer = 0;
-            jumpDelay = .2f;
+            jumpHeight = 1.5f;
+            //jumpTimer = 0;
+            //jumpDelay = .2f;
             maxVelocity = 2f;
-            moveSpeed = 4f;
+            moveSpeed = 8f;
             _isMovingLeft = false;
             _isMovingRight = false;
 
@@ -45,33 +45,21 @@ namespace DimensionalBeats.Helper {
             _velocityY = 0;
         }
 
-        public Vector2 calculateMovement(int dir) {
+        public Vector2 calculateMovement(int dir, int trigger = -1) {
             //Apply gravity
             if (!_collisionState.below)
                 _velocityY += _GRAVITY * Time.deltaTime;
 
             //Apply initial force
             switch (dir) {
-                case 0:
-                    if (_collisionState.below && jumpTimer >= jumpDelay) {
-                        _velocityY = -jumpVelocity;
-                        jumpTimer = 0;
-                    }
-                    break;
                 case 1:
                     _velocityX += moveSpeed * Time.deltaTime;
-                    if (_collisionState.below && jumpTimer >= jumpDelay) {
-                        _velocityY = -jumpVelocity;
-                        jumpTimer = 0;
-                    }
                     break;
                 case 2:
                     _velocityX += moveSpeed * Time.deltaTime;
                     break;
                 case 3:
                     _velocityX += moveSpeed * Time.deltaTime;
-                    break;
-                case 4:
                     break;
                 case 5:
                     _velocityX -= moveSpeed * Time.deltaTime;
@@ -81,15 +69,26 @@ namespace DimensionalBeats.Helper {
                     break;
                 case 7:
                     _velocityX -= moveSpeed * Time.deltaTime;
-                    if (_collisionState.below && jumpTimer >= jumpDelay) {
-                        _velocityY = -jumpVelocity;
-                        jumpTimer = 0;
+                    break;
+                case -1:
+                    break;
+                default:
+                    break;
+            }
+
+            switch (trigger) {
+                //Jump trigger
+                case 0:
+                    if (_collisionState.below /*&& jumpTimer >= jumpDelay*/) {
+                        applyForce(new Vector2(0, -Mathf.sqrt(2 * jumpHeight * _GRAVITY)));
+                        //jumpTimer = 0;
                     }
                     break;
                 case -1:
                     break;
+                default:
+                    break;
             }
-
 
             _isMovingLeft = (_velocityX < 0) ? true : false;
             _isMovingRight = (_velocityX > 0) ? true : false;
@@ -108,7 +107,7 @@ namespace DimensionalBeats.Helper {
             //Check statements
             if (_collisionState.left || _collisionState.right) _velocityX = 0;
             if (_collisionState.below) {
-                jumpTimer = Mathf.clamp(jumpTimer + Time.deltaTime, 0, jumpDelay);
+                //jumpTimer = Mathf.clamp(jumpTimer + Time.deltaTime, 0, jumpDelay);
                 if(_velocityY >= 0) _velocityY = 0;
             }
             if (_collisionState.above) _velocityY = 0;
@@ -117,5 +116,11 @@ namespace DimensionalBeats.Helper {
 
             return new Vector2(_velocityX, _velocityY);
         }
+
+        public void applyForce(Vector2 force) {
+            _velocityX += force.X;
+            _velocityY += force.Y;
+        }
+
     }
 }

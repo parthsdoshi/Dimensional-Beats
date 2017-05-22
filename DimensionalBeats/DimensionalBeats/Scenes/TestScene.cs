@@ -37,7 +37,13 @@ namespace DimensionalBeats.Scenes
             Entity player = new CookieCutterEntity("Player", spawn.position, playerSprite, playerController);
 
             player.addComponent<Controller>(playerController);
-            player.addComponent<FollowCamera>(new FollowCamera(player));
+
+            //Add camera to player
+            FollowCamera camera = new FollowCamera(player);
+            camera.mapLockEnabled = true;
+            Debug.log("Map Size W: " + map.width + " H: " + map.height);
+            camera.mapSize = new Vector2(map.width * map.tileWidth, map.height * map.tileHeight);
+            player.addComponent<FollowCamera>(camera);
 
             //Add collision layers here*******************************************************************
             player.addComponent<TiledMapMover>(new TiledMapMover(map.getLayer<TiledTileLayer>("Ground")));
