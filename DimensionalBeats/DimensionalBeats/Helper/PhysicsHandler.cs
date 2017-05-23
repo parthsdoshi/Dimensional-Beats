@@ -35,7 +35,7 @@ namespace DimensionalBeats.Helper {
             //jumpTimer = 0;
             //jumpDelay = .2f;
             maxVelocity = 2f;
-            moveSpeed = 8f;
+            moveSpeed = 16f;
             _isMovingLeft = false;
             _isMovingRight = false;
 
@@ -105,7 +105,7 @@ namespace DimensionalBeats.Helper {
             if (Mathf.approximately(0, _velocityX)) _velocityX = 0;
 
             //Check statements
-            if (_collisionState.left || _collisionState.right) _velocityX = 0;
+            //if (_collisionState.left || _collisionState.right) _velocityX = 0;
             if (_collisionState.below) {
                 //jumpTimer = Mathf.clamp(jumpTimer + Time.deltaTime, 0, jumpDelay);
                 if(_velocityY >= 0) _velocityY = 0;

@@ -8,9 +8,9 @@ namespace DimensionalBeats
     /// </summary>
     public class Game1 : Core
     {
-        public const short DEFAULT_ART_WIDTH = 1280/2;
-        public const short DEFAULT_ART_HEIGHT = 720/2;
-        public const short DEFAULT_SCALE = 2;
+        public const short DEFAULT_ART_WIDTH = 1280/4;
+        public const short DEFAULT_ART_HEIGHT = 720/4;
+        public const short DEFAULT_SCALE = 4;
         public const short TILE_SIZE = 16;
         
         //Resolution of the window
