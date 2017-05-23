@@ -12,7 +12,7 @@ namespace DimensionalBeats.Helper{
         public int getMovement() {
             KeyboardState keyboardState = Input.currentKeyboardState;
             KeyboardState previousState = Input.previousKeyboardState;
-            Keys[] keyPressed = keyboardState.GetPressedKeys();
+            Keys[] keysPressed = keyboardState.GetPressedKeys();
 
             if ((isLeft(previousState) && isUp(keyboardState)) ||
                 (isLeft(keyboardState) && isUp(previousState))) return 7;
