@@ -1,8 +1,7 @@
 ﻿using DimensionalBeats.Helper;
-using DimensionalBeats.Entities;
+using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Tiled;
-using System;
 
 namespace DimensionalBeats.Controllers {
     class PlayerController : Controller, IUpdatable {
@@ -31,7 +30,37 @@ namespace DimensionalBeats.Controllers {
             if (entity == null) return;
 
             //Use physics handler & TiledMapMover to calculate movement
-            _mover.move(_physicsHandler.calculateMovement((_inputHandler.getMovement()), _inputHandler.getEvent()), _boxCollider, collisionState);
+            Vector2 dir;
+            switch (_inputHandler.getMovement()) {
+                case 1:
+                    dir = new Vector2(1, -1);
+                    break;
+                case 2:
+                    dir = new Vector2(1, 0);
+                    break;
+                case 3:
+                    dir = new Vector2(1, 1);
+                    break;
+                case 4:
+                    dir = new Vector2(0, 1);
+                    break;
+                case 5:
+                    dir = new Vector2(-1, 1);
+                    break;
+                case 6:
+                    dir = new Vector2(-1, 0);
+                    break;
+                case 7:
+                    dir = new Vector2(-1, -1);
+                    break;
+                case -1:
+                    dir = new Vector2(0, 0);
+                    break;
+                default:
+                    dir = new Vector2(0, 0);
+                    break;
+            }
+            _mover.move(_physicsHandler.calculateMovement(dir, _inputHandler.getEvent()), _boxCollider, collisionState);
         }
 
     }

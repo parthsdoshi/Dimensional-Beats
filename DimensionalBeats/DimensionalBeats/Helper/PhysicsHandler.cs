@@ -18,6 +18,7 @@ namespace DimensionalBeats.Helper {
         //public float jumpTimer { get; set; }
         public float maxVelocity { get; set; }
         public float moveSpeed { get; set; }
+        public bool applyGravity { get; set; }
 
         private float _deltaX;
         private float _deltaY;
@@ -38,6 +39,7 @@ namespace DimensionalBeats.Helper {
             //jumpDelay = .2f;
             maxVelocity = 2f;
             moveSpeed = 16f;
+            applyGravity = true;
 
             _deltaX = 0;
             _deltaY = 0;
@@ -45,36 +47,16 @@ namespace DimensionalBeats.Helper {
             _velocityY = 0;
         }
 
-        public Vector2 calculateMovement(int dir, int trigger = -1) {
+        public Vector2 calculateMovement(Vector2 dir, int trigger = -1) {
+            float theta = Mathf.atan2(dir.Y, dir.X);
             //Apply gravity
-            if (!_collisionState.below)
+            if (!_collisionState.below && applyGravity)
                 _velocityY += _GRAVITY * Time.deltaTime;
 
-            //Apply initial force
-            switch (dir) {
-                case 1:
-                    _velocityX += moveSpeed * Time.deltaTime;
-                    break;
-                case 2:
-                    _velocityX += moveSpeed * Time.deltaTime;
-                    break;
-                case 3:
-                    _velocityX += moveSpeed * Time.deltaTime;
-                    break;
-                case 5:
-                    _velocityX -= moveSpeed * Time.deltaTime;
-                    break;
-                case 6:
-                    _velocityX -= moveSpeed * Time.deltaTime;
-                    break;
-                case 7:
-                    _velocityX -= moveSpeed * Time.deltaTime;
-                    break;
-                case -1:
-                    break;
-                default:
-                    break;
-            }
+            //Apply initial force (apply force in direction)
+            if(dir.X != 0 && dir.Y != 0)
+                applyForce(new Vector2(moveSpeed / Mathf.sin(theta), 0));
+            
 
             switch (trigger) {
                 //Jump trigger
@@ -114,8 +96,10 @@ namespace DimensionalBeats.Helper {
             }
             if (_collisionState.above) _velocityY = 0;
 
-            return new Vector2(_velocityX, _velocityY);
+            return getImpulse();
         }
+
+        public Vector2 getImpulse() { return new Vector2(_velocityX, _velocityY); }
 
         public void applyForce(Vector2 force) {
             _velocityX += force.X;
