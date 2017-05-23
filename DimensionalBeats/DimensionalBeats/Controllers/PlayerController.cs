@@ -2,6 +2,7 @@
 using DimensionalBeats.Entities;
 using Nez;
 using Nez.Tiled;
+using System;
 
 namespace DimensionalBeats.Controllers {
     class PlayerController : Controller, IUpdatable {
@@ -32,5 +33,6 @@ namespace DimensionalBeats.Controllers {
             //Use physics handler & TiledMapMover to calculate movement
             _mover.move(_physicsHandler.calculateMovement((_inputHandler.getMovement()), _inputHandler.getEvent()), _boxCollider, collisionState);
         }
+
     }
 }
