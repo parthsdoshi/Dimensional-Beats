@@ -1,5 +1,7 @@
 ﻿using Nez;
 using DimensionalBeats.Helper;
+using DimensionalBeats.Controllers;
+using Nez.Sprites;
 
 namespace DimensionalBeats.Entities {
     class ProjectileEntity : Entity{
@@ -7,9 +9,15 @@ namespace DimensionalBeats.Entities {
         private float direction;
         private ProjectileType type;
 
-        public ProjectileEntity(PhysicsHandler physicsHandler, ProjectileType type) : base(){
+        public ProjectileEntity(Controller projectileController, ProjectileType type, Sprite sprite) : base(){
+            addComponent<Controller>(projectileController);
+            addComponent<Sprite>(sprite);
 
         }
 
+
+        public override void update() {
+            base.update();
+        }
     }
 }

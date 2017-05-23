@@ -35,6 +35,7 @@ namespace DimensionalBeats.Helper{
         public int getEvent() {
             //Jump event
             if (Input.isKeyPressed(Keys.W) || Input.isKeyPressed(Keys.Space)) return 0;
+            if (Input.isKeyPressed(Keys.D1) || Input.isKeyPressed(Keys.Q)) return 1;
 
             return -1;
         }

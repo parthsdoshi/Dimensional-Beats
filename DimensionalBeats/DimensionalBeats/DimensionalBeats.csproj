@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\Projectile Controllers\ProjectileController.cs" />
     <Compile Include="Controllers\Projectile Controllers\ProjectileWave.cs" />
     <Compile Include="Entities\ProjectileEntity.cs" />
     <Compile Include="Entities\CookieCutterEntity.cs" />
