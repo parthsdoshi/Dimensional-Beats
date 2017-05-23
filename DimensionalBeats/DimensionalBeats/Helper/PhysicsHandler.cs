@@ -8,7 +8,7 @@ namespace DimensionalBeats.Helper {
     class PhysicsHandler : Component{
         private const float _GRAVITY = 9.8f;
 
-        private CookieCutterEntity entity;
+        private CookieCutterEntity cookieCutterEntity;
 
         private float _mass;
         private float _friction;
@@ -27,7 +27,7 @@ namespace DimensionalBeats.Helper {
         private TiledMapMover.CollisionState _collisionState;
 
         public PhysicsHandler(CookieCutterEntity entity, TiledMapMover.CollisionState collisionState, float mass, float friction = .3f) {
-            this.entity = entity;
+            this.cookieCutterEntity = entity;
             this._collisionState = collisionState;
             this._mass = mass;
             this._friction = friction;
@@ -90,14 +90,14 @@ namespace DimensionalBeats.Helper {
                     break;
             }
 
-            entity.isMovingLeft = (_velocityX < 0) ? true : false;
-            entity.isMovingRight = (_velocityX > 0) ? true : false;
+            cookieCutterEntity.isMovingLeft = (_velocityX < 0) ? true : false;
+            cookieCutterEntity.isMovingRight = (_velocityX > 0) ? true : false;
 
             /*Calculate friction
              * V = V0 - at
              */
-            if (!entity.isMovingRight && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX + ((_friction * _GRAVITY) * Time.deltaTime), -maxVelocity, 0);
-            else if(!entity.isMovingLeft && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX - ((_friction * _GRAVITY) * Time.deltaTime), 0, maxVelocity);
+            if (!cookieCutterEntity.isMovingRight && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX + ((_friction * _GRAVITY) * Time.deltaTime), -maxVelocity, 0);
+            else if(!cookieCutterEntity.isMovingLeft && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX - ((_friction * _GRAVITY) * Time.deltaTime), 0, maxVelocity);
 
             if (Mathf.approximately(0, _velocityX)) _velocityX = 0;
 

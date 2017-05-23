@@ -20,7 +20,7 @@ namespace DimensionalBeats.Entities {
             this.position = position;
 
             isMovingLeft = false;
-            isMovingLeft = false;
+            isMovingRight = false;
 
             inputHandler = new InputHandler();
         }
@@ -32,7 +32,7 @@ namespace DimensionalBeats.Entities {
             addComponent<Controller>(controller);
 
             isMovingLeft = false;
-            isMovingLeft = false;
+            isMovingRight = false;
 
             inputHandler = new InputHandler();
         }
