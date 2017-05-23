@@ -1,11 +1,14 @@
 ﻿
 using Microsoft.Xna.Framework;
+using DimensionalBeats.Entities;
 using Nez;
 using Nez.Tiled;
 
 namespace DimensionalBeats.Helper {
-    class PhysicsHandler {
+    class PhysicsHandler : Component{
         private const float _GRAVITY = 9.8f;
+
+        private CookieCutterEntity entity;
 
         private float _mass;
         private float _friction;
@@ -15,8 +18,6 @@ namespace DimensionalBeats.Helper {
         //public float jumpTimer { get; set; }
         public float maxVelocity { get; set; }
         public float moveSpeed { get; set; }
-        private bool _isMovingLeft;
-        private bool _isMovingRight;
 
         private float _deltaX;
         private float _deltaY;
@@ -25,19 +26,18 @@ namespace DimensionalBeats.Helper {
 
         private TiledMapMover.CollisionState _collisionState;
 
-        public PhysicsHandler(TiledMapMover.CollisionState collisionState, float mass, float friction = .3f) {
+        public PhysicsHandler(CookieCutterEntity entity, TiledMapMover.CollisionState collisionState, float mass, float friction = .3f) {
+            this.entity = entity;
             this._collisionState = collisionState;
             this._mass = mass;
             this._friction = friction;
 
             //Default values (units in per Tile)
-            jumpHeight = 1.5f;
+            jumpHeight = 1.2f;
             //jumpTimer = 0;
             //jumpDelay = .2f;
             maxVelocity = 2f;
             moveSpeed = 16f;
-            _isMovingLeft = false;
-            _isMovingRight = false;
 
             _deltaX = 0;
             _deltaY = 0;
@@ -90,8 +90,8 @@ namespace DimensionalBeats.Helper {
                     break;
             }
 
-            _isMovingLeft = (_velocityX < 0) ? true : false;
-            _isMovingRight = (_velocityX > 0) ? true : false;
+            entity.isMovingLeft = (_velocityX < 0) ? true : false;
+            entity.isMovingRight = (_velocityX > 0) ? true : false;
 
 
             Debug.log("Before friction - vX: " + _velocityX + " vY: " + _velocityY);
@@ -99,14 +99,15 @@ namespace DimensionalBeats.Helper {
             /*Calculate friction
              * V = V0 - at
              */
-            if (!_isMovingRight && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX + ((_friction * _GRAVITY) * Time.deltaTime), -maxVelocity, 0);
-            else if(!_isMovingLeft && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX - ((_friction * _GRAVITY) * Time.deltaTime), 0, maxVelocity);
+            if (!entity.isMovingRight && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX + ((_friction * _GRAVITY) * Time.deltaTime), -maxVelocity, 0);
+            else if(!entity.isMovingLeft && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX - ((_friction * _GRAVITY) * Time.deltaTime), 0, maxVelocity);
 
             if (Mathf.approximately(0, _velocityX)) _velocityX = 0;
 
             //Check statements
             //if (_collisionState.left || _collisionState.right) _velocityX = 0;
             if (_collisionState.below) {
+                Debug.log("Clamp gravity");
                 //jumpTimer = Mathf.clamp(jumpTimer + Time.deltaTime, 0, jumpDelay);
                 if(_velocityY >= 0) _velocityY = 0;
             }
