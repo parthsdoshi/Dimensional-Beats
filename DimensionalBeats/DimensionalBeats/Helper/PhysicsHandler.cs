@@ -93,9 +93,6 @@ namespace DimensionalBeats.Helper {
             entity.isMovingLeft = (_velocityX < 0) ? true : false;
             entity.isMovingRight = (_velocityX > 0) ? true : false;
 
-
-            Debug.log("Before friction - vX: " + _velocityX + " vY: " + _velocityY);
-
             /*Calculate friction
              * V = V0 - at
              */
@@ -105,15 +102,17 @@ namespace DimensionalBeats.Helper {
             if (Mathf.approximately(0, _velocityX)) _velocityX = 0;
 
             //Check statements
-            //if (_collisionState.left || _collisionState.right) _velocityX = 0;
+            /*
+            if (_collisionState.left || _collisionState.right) {
+                _velocityX = 0;
+                Debug.log("Clamp vX");
+            }
+            */
             if (_collisionState.below) {
-                Debug.log("Clamp gravity");
                 //jumpTimer = Mathf.clamp(jumpTimer + Time.deltaTime, 0, jumpDelay);
                 if(_velocityY >= 0) _velocityY = 0;
             }
             if (_collisionState.above) _velocityY = 0;
-
-            Debug.log("vX: " + _velocityX + " vY: " + _velocityY);
 
             return new Vector2(_velocityX, _velocityY);
         }
