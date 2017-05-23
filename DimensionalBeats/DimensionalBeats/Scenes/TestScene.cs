@@ -47,7 +47,7 @@ namespace DimensionalBeats.Scenes
             //Add collision layers here*******************************************************************
             player.addComponent<TiledMapMover>(new TiledMapMover(map.getLayer<TiledTileLayer>("Ground")));
             player.addComponent<BoxCollider>(new BoxCollider(-playerSprite.width/2, -playerSprite.height/2, playerSprite.width, playerSprite.height));
-            player.addComponent<PhysicsHandler>(new PhysicsHandler(player, playerController.collisionState, 10f, .5f));
+            player.addComponent<PhysicsHandler>(new PhysicsHandler(player, playerController.collisionState, 20f, .5f));
             this.addEntity<Entity> (player);
 
         }

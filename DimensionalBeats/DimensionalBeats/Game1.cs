@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using DimensionalBeats.Scenes;
 using Nez;
 
 namespace DimensionalBeats

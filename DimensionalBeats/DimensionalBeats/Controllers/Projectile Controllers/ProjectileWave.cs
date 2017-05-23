@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nez;
+using DimensionalBeats.Helper;
 
 namespace DimensionalBeats.Controllers.Projectile_Controllers {
-    class Class1 {
+    class ProjectileWave : Controller{
+        private PhysicsHandler _physicsHandler;
+
+        public ProjectileWave() : base(){
+            
+        }
     }
 }
