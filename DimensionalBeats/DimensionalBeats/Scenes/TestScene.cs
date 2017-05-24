@@ -15,7 +15,6 @@ namespace DimensionalBeats.Scenes
     {
         private int offsetX;
         private int offsetY;
-        FollowCamera camera;
 
         public TestScene() : base() {
             initialize();
@@ -41,7 +40,7 @@ namespace DimensionalBeats.Scenes
             CookieCutterEntity player = new CookieCutterEntity("Player", spawn.position, playerSprite, playerController);
 
             //Add camera to player
-            camera = new FollowCamera(player);
+            FollowCamera camera = new FollowCamera(player);
             camera.mapLockEnabled = true;
             camera.mapSize = new Vector2(map.width * map.tileWidth, map.height * map.tileHeight);
             player.addComponent<FollowCamera>(camera);
@@ -54,34 +53,7 @@ namespace DimensionalBeats.Scenes
 
         }
 
-        public Entity createProjectile(Vector2 pos, Vector2 dir, Sprite sprite) {
-            Entity entity = createEntity("Entity");
-            ProjectileWave waveProjectileController = new ProjectileWave();
-            ProjectileEntity waveProjectile = new ProjectileEntity(waveProjectileController, ProjectileType.WAVE);
-            entity.position = pos;
-
-            //Attach Sprite
-            sprite.setRenderLayer(1);
-            entity.addComponent<Sprite>(sprite);
-
-            //Attack physics
-            PhysicsHandler physicsHandler = new PhysicsHandler(waveProjectile, waveProjectileController.collisionResult);
-            physicsHandler.moveSpeed = 4f;
-            physicsHandler.isProjectile = true;
-            physicsHandler.applyGravity = false;
-            entity.addComponent<PhysicsHandler>(physicsHandler);
-            
-            //Attach hit detection
-            CircleCollider circleCollider = new CircleCollider(sprite.width);
-            entity.addComponent<CircleCollider>(circleCollider);
-
-            //Attack mover
-            Mover mover = new Mover();
-            entity.addComponent<Mover>(mover);
-
-            Debug.log("Projectile created at X: " + pos.X + " Y: " + pos.Y);
-            return entity;
-        }
+        
     }
 }
 

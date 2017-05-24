@@ -18,7 +18,7 @@ namespace DimensionalBeats.Controllers {
         private TiledMapMover _mover;
         public TiledMapMover.CollisionState collisionState { get; }
 
-        private Sprite musicAttack_1;
+        private Texture2D musicAttack_1;
 
         public PlayerController() : base() {
             _inputHandler = new InputHandler();
@@ -36,15 +36,17 @@ namespace DimensionalBeats.Controllers {
     
         public void loadContent() {
             //Implement later
-            musicAttack_1 = new Sprite(entity.scene.content.Load<Texture2D>("Temp/MusicSprite1"));
+            musicAttack_1 = entity.scene.content.Load<Texture2D>("Temp/MusicSprite1");
             Debug.log("Content loaded");
         }
 
         public void update() {
             if (entity == null) return;
 
+            int eventHandler = _inputHandler.getEvent();
+
             //Get event from keyboard
-            switch (_inputHandler.getEvent()) {
+            switch (eventHandler) {
                 case 0: //Jump
                     //Tweak physicsHandler later to incorporate jump here
                     break;
@@ -88,18 +90,55 @@ namespace DimensionalBeats.Controllers {
                     break;
             }
 
-            _mover.move(_physicsHandler.calculateMovement(dir, _inputHandler.getEvent()), _boxCollider, collisionState);
+            _mover.move(_physicsHandler.calculateMovement(dir, eventHandler), _boxCollider, collisionState);
         }
 
         public void useAbility(short type) {
             switch (type) {
                 case 0:
+                    System.Random rand = new System.Random();
                     TestScene scene = entity.scene as TestScene;
                     Vector2 pos = new Vector2(entity.position.X, entity.position.Y);
-                    scene.createProjectile(pos, new Vector2(4, 0), new PrototypeSprite(16, 16));
-                    //scene.createProjectile(pos, new Vector2(4, 0), musicAttack_1);
+                    //scene.createProjectile(pos, new Vector2(4, 0), new PrototypeSprite(16, 16));
+                    Sprite sprite = new Sprite(musicAttack_1);
+                    createProjectile(pos, 0f, 4f, sprite);
                     break;
             }
+        }
+
+        public Entity createProjectile(Vector2 pos, float theta, float velocity, Sprite sprite) {
+            // Entity entity = createEntity("Entity");
+            ProjectileWave waveProjectileController = new ProjectileWave();
+            ProjectileEntity waveProjectile = new ProjectileEntity(waveProjectileController, ProjectileType.WAVE);
+
+            //Hardcoding position adjustments
+            //pos.X += 16;
+            waveProjectile.position = pos;
+            
+            waveProjectile.velocity = velocity * Game1.TILE_SIZE;
+            waveProjectile.theta = theta;
+
+            //Attach Sprite
+            sprite.setRenderLayer(1);
+            waveProjectile.addComponent<Sprite>(sprite);
+
+            //Attack physics
+            PhysicsHandler physicsHandler = new PhysicsHandler(waveProjectile, waveProjectileController.collisionResult);
+            physicsHandler.isProjectile = true;
+            physicsHandler.applyGravity = false;
+            waveProjectile.addComponent<PhysicsHandler>(physicsHandler);
+
+            //Attach hit detection
+            CircleCollider circleCollider = new CircleCollider(sprite.width);
+            waveProjectile.addComponent<CircleCollider>(circleCollider);
+
+            //Attack mover
+            Mover mover = new Mover();
+            waveProjectile.addComponent<Mover>(mover);
+
+            entity.scene.addEntity<ProjectileEntity>(waveProjectile);
+
+            return waveProjectile;
         }
     }
 }

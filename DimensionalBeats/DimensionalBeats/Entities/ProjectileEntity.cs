@@ -2,21 +2,18 @@
 using DimensionalBeats.Helper;
 using DimensionalBeats.Controllers;
 using Nez.Sprites;
+using DimensionalBeats.Controllers.Projectile_Controllers;
+using Microsoft.Xna.Framework;
 
 namespace DimensionalBeats.Entities {
     class ProjectileEntity : Entity{
-        private float velocity;
-        private float direction;
-        private ProjectileType type;
+        public float velocity { get; set; }
+        public float theta { get; set; }
+        private ProjectileType _type;
 
         public ProjectileEntity(Controller projectileController, ProjectileType type) : base(){
             addComponent<Controller>(projectileController);
-
-        }
-
-
-        public override void update() {
-            base.update();
+            //transform.scale = new Vector2(.5f, .5f);
         }
     }
 }

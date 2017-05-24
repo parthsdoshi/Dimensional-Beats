@@ -1,14 +1,10 @@
 ﻿using DimensionalBeats.Helper;
+using Microsoft.Xna.Framework;
 using Nez;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DimensionalBeats.Controllers.Projectile_Controllers {
 
-    class ProjectileController : Controller{
+    class ProjectileController : Controller {
         protected PhysicsHandler _physicsHandler;
 
         protected CircleCollider _circleCollider;
@@ -20,10 +16,16 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
         }
 
         public override void onAddedToEntity() {
-            base.onAddedToEntity();
             _circleCollider = entity.getComponent<CircleCollider>();
             _mover = entity.getComponent<Mover>();
             _physicsHandler = entity.getComponent<PhysicsHandler>();
+        }
+
+        public void move(float theta, float speed) {
+            CollisionResult res;
+            float deltaX = speed * Mathf.cos(theta);
+            float deltaY = speed * Mathf.sin(theta);
+            _mover.move(new Vector2(deltaX, deltaY) * Time.deltaTime, out res);
         }
     }
 }
