@@ -35,7 +35,9 @@ namespace DimensionalBeats.Controllers {
         }
     
         public void loadContent() {
+            //Implement later
             musicAttack_1 = new Sprite(entity.scene.content.Load<Texture2D>("Temp/MusicSprite1"));
+            Debug.log("Content loaded");
         }
 
         public void update() {
@@ -94,7 +96,8 @@ namespace DimensionalBeats.Controllers {
                 case 0:
                     TestScene scene = entity.scene as TestScene;
                     Vector2 pos = new Vector2(entity.position.X, entity.position.Y);
-                    scene.createProjectile(pos, new Vector2(4, 0), musicAttack_1);
+                    scene.createProjectile(pos, new Vector2(4, 0), new PrototypeSprite(16, 16));
+                    //scene.createProjectile(pos, new Vector2(4, 0), musicAttack_1);
                     break;
             }
         }

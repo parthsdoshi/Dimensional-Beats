@@ -9,9 +9,8 @@ namespace DimensionalBeats.Entities {
         private float direction;
         private ProjectileType type;
 
-        public ProjectileEntity(Controller projectileController, ProjectileType type, Sprite sprite) : base(){
+        public ProjectileEntity(Controller projectileController, ProjectileType type) : base(){
             addComponent<Controller>(projectileController);
-            addComponent<Sprite>(sprite);
 
         }
 

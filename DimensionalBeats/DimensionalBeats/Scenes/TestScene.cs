@@ -57,7 +57,7 @@ namespace DimensionalBeats.Scenes
         public Entity createProjectile(Vector2 pos, Vector2 dir, Sprite sprite) {
             Entity entity = createEntity("Entity");
             ProjectileWave waveProjectileController = new ProjectileWave();
-            ProjectileEntity waveProjectile = new ProjectileEntity(waveProjectileController, ProjectileType.WAVE, sprite);
+            ProjectileEntity waveProjectile = new ProjectileEntity(waveProjectileController, ProjectileType.WAVE);
             entity.position = pos;
 
             //Attach Sprite
@@ -70,7 +70,7 @@ namespace DimensionalBeats.Scenes
             physicsHandler.isProjectile = true;
             physicsHandler.applyGravity = false;
             entity.addComponent<PhysicsHandler>(physicsHandler);
-
+            
             //Attach hit detection
             CircleCollider circleCollider = new CircleCollider(sprite.width);
             entity.addComponent<CircleCollider>(circleCollider);
