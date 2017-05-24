@@ -47,9 +47,13 @@ namespace DimensionalBeats.Scenes
             player.addComponent<FollowCamera>(camera);
 
             //Add collision layers here*******************************************************************
+            BoxCollider collider = new BoxCollider(-playerSprite.width / 2, -playerSprite.height / 2, playerSprite.width, playerSprite.height);
             player.addComponent<TiledMapMover>(new TiledMapMover(map.getLayer<TiledTileLayer>("Ground")));
-            player.addComponent<BoxCollider>(new BoxCollider(-playerSprite.width/2, -playerSprite.height/2, playerSprite.width, playerSprite.height));
+            player.addComponent<BoxCollider>(collider);
             player.addComponent<PhysicsHandler>(new PhysicsHandler(player, playerController.collisionState, 20f, .5f));
+            Flags.setFlagExclusive(ref collider.collidesWithLayers, 0);
+            Flags.setFlagExclusive(ref collider.physicsLayer, 1);
+
             this.addEntity<Entity> (player);
         }
 

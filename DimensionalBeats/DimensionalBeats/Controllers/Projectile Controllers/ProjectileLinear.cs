@@ -19,7 +19,8 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
 
             float deltaX = _velocity * Game1.TILE_SIZE * Mathf.cos(_theta);
             float deltaY = _velocity * Game1.TILE_SIZE * Mathf.sin(_theta);
-            _mover.move(new Vector2(deltaX, deltaY) * Time.deltaTime, out res);
+            if(_mover.move(new Vector2(deltaX, deltaY) * Time.deltaTime, out res))
+                entity.destroy();
 
             _lifespan -= Time.deltaTime;
             if (_lifespan <= 0) entity.destroy();

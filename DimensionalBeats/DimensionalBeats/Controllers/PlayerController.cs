@@ -139,6 +139,8 @@ namespace DimensionalBeats.Controllers {
             //Attach hit detection
             CircleCollider circleCollider = new CircleCollider(sprite.width);
             waveProjectile.addComponent<CircleCollider>(circleCollider);
+            Flags.setFlagExclusive(ref circleCollider.collidesWithLayers, 0);
+            Flags.setFlagExclusive(ref circleCollider.physicsLayer, 1);
 
             //Attack mover
             Mover mover = new Mover();

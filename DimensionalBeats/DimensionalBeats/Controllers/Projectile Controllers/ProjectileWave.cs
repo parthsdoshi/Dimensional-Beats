@@ -26,11 +26,14 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
             Vector2 lineVector = new Vector2(deltaX, deltaY);
             Vector2 pulseVector = new Vector2(-deltaY, deltaX) * Mathf.sin(_deltaTheta);
 
-            _mover.move((lineVector + pulseVector) * Time.deltaTime, out res);
+            //Destroy if movement is stopped
+            if (_mover.move((lineVector + pulseVector) * Time.deltaTime, out res))
+                entity.destroy();
 
             _deltaTheta += Mathf.deg2Rad * 15;
             if (_deltaTheta >= MathHelper.TwoPi) _deltaTheta = 0;
 
+            //Destroy after lifespan
             _lifespan -= Time.deltaTime;
             if (_lifespan <= 0) entity.destroy();
         }
