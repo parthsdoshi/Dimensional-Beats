@@ -34,7 +34,7 @@ namespace DimensionalBeats
 
             base.Initialize();
 
-            
+            Debug.log("Game initializing");
 
             //Resolution of the game
             Scene.setDefaultDesignResolution(DEFAULT_ART_WIDTH, DEFAULT_ART_HEIGHT, Scene.SceneResolutionPolicy.ShowAll);

@@ -29,15 +29,24 @@ namespace DimensionalBeats.Entities {
 
             isMovingLeft = false;
             isMovingRight = false;
+
+            Debug.log("Player created");
+        }
+
+        public override void onAddedToScene() {
+            base.onAddedToScene();
+            Debug.log("Player added to scene");
         }
 
         //Change sprite of the entity
         public void loadSprites(Sprite sprite) {
             //Eventually load all sprites from a sprite sheet into a sprite-state manager
 
+            /*
             if (getComponent<Sprite>() != null) removeComponent<Sprite>();
 
             addComponent<Sprite>(sprite);
+            */
         }
 
         public override void update() {

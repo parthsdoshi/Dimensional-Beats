@@ -17,11 +17,12 @@ namespace DimensionalBeats.Scenes
         private int offsetY;
 
         public TestScene() : base() {
-            initialize();
         }
 
         public override void initialize()
         {
+            Debug.log("Scene initialized");
+
             clearColor = Color.CornflowerBlue;
             addRenderer(new DefaultRenderer());
 
@@ -50,7 +51,6 @@ namespace DimensionalBeats.Scenes
             player.addComponent<BoxCollider>(new BoxCollider(-playerSprite.width/2, -playerSprite.height/2, playerSprite.width, playerSprite.height));
             player.addComponent<PhysicsHandler>(new PhysicsHandler(player, playerController.collisionState, 20f, .5f));
             this.addEntity<Entity> (player);
-
         }
 
         

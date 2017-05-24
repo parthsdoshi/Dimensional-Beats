@@ -21,7 +21,6 @@ namespace DimensionalBeats.Controllers {
         private Texture2D musicAttack_1;
 
         public PlayerController() : base() {
-            _inputHandler = new InputHandler();
             collisionState = new TiledMapMover.CollisionState();
         }
         
@@ -31,6 +30,7 @@ namespace DimensionalBeats.Controllers {
             _mover = entity.getComponent<TiledMapMover>();
             _physicsHandler = entity.getComponent<PhysicsHandler>();
 
+            _inputHandler = new InputHandler();
             loadContent();
         }
     
@@ -115,15 +115,15 @@ namespace DimensionalBeats.Controllers {
             //pos.X += 16;
             waveProjectile.position = pos;
             
-            waveProjectile.velocity = velocity * Game1.TILE_SIZE;
-            waveProjectile.theta = theta;
+            waveProjectileController.velocity = velocity * Game1.TILE_SIZE;
+            waveProjectileController.theta = theta;
 
             //Attach Sprite
             sprite.setRenderLayer(1);
             waveProjectile.addComponent<Sprite>(sprite);
 
             //Attack physics
-            PhysicsHandler physicsHandler = new PhysicsHandler(waveProjectile, waveProjectileController.collisionResult);
+            PhysicsHandler physicsHandler = new PhysicsHandler(waveProjectileController.collisionResult);
             physicsHandler.isProjectile = true;
             physicsHandler.applyGravity = false;
             waveProjectile.addComponent<PhysicsHandler>(physicsHandler);

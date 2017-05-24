@@ -7,7 +7,6 @@ namespace DimensionalBeats.Helper {
     class PhysicsHandler : Component{
         private const float _GRAVITY = 9.8f;
         private CookieCutterEntity _cookieCutterEntity;
-        private ProjectileEntity _projectileEntity;
 
         private float _mass;
         private float _friction;
@@ -47,8 +46,7 @@ namespace DimensionalBeats.Helper {
             _velocityY = 0;
         }
 
-        public PhysicsHandler(ProjectileEntity entity, CollisionResult collisionResult, float mass = 10f) : base() {
-            this._projectileEntity = entity;
+        public PhysicsHandler(CollisionResult collisionResult, float mass = 10f) : base() {
             this._collisionResult = collisionResult;
             this._mass = mass;
 

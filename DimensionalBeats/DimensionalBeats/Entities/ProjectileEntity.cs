@@ -7,8 +7,6 @@ using Microsoft.Xna.Framework;
 
 namespace DimensionalBeats.Entities {
     class ProjectileEntity : Entity{
-        public float velocity { get; set; }
-        public float theta { get; set; }
         private ProjectileType _type;
 
         public ProjectileEntity(Controller projectileController, ProjectileType type) : base(){
