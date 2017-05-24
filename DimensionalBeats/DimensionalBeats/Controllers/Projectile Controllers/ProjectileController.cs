@@ -23,8 +23,8 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
 
         public void move(float theta, float speed) {
             CollisionResult res;
-            float deltaX = speed * Mathf.cos(theta);
-            float deltaY = speed * Mathf.sin(theta);
+            float deltaX = speed * Game1.TILE_SIZE * Mathf.cos(theta);
+            float deltaY = speed * Game1.TILE_SIZE * Mathf.sin(theta);
             _mover.move(new Vector2(deltaX, deltaY) * Time.deltaTime, out res);
         }
     }

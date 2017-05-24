@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using System;
 using Nez;
+using Microsoft.Xna.Framework;
 
 namespace DimensionalBeats.Helper{
     class InputHandler {
@@ -39,8 +40,19 @@ namespace DimensionalBeats.Helper{
                 Debug.log("Event registered: Ability 1");
                 return 1;
             }
-
+            if (Input.isKeyPressed(Keys.D2) || Input.isKeyPressed(Keys.E)) {
+                Debug.log("Event registered: Ability 2");
+                return 2;
+            }
             return -1;
+        }
+
+        //Get direction of mouse from player
+        public float getMouseDirectionInRad(Vector2 pos) {
+            float x = Input.scaledMousePosition.X - pos.X;
+            float y = Input.scaledMousePosition.Y - pos.Y;
+            Debug.log("getMouseDirectionInRad() - X: " + x + " Y: " + y);
+            return Mathf.atan2(y, x);
         }
 
         public Boolean isLeft(KeyboardState k) {

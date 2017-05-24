@@ -53,6 +53,9 @@ namespace DimensionalBeats.Controllers {
                 case 1: //Ability 1
                     useAbility(0);
                     break;
+                case 2: //Ability 2
+                    useAbility(1);
+                    break;
             }
 
             //Use physics handler & TiledMapMover to calculate movement
@@ -94,36 +97,41 @@ namespace DimensionalBeats.Controllers {
         }
 
         public void useAbility(short type) {
+            TestScene scene = entity.scene as TestScene;
+            Vector2 pos = new Vector2(entity.position.X, entity.position.Y);
+            Sprite sprite;
+            //Get relative direction of mouse
+            float theta = _inputHandler.getMouseDirectionInRad(scene.camera.worldToScreenPoint(pos));
+            Debug.log("Creating projectile at theta: " + theta);
             switch (type) {
                 case 0:
-                    System.Random rand = new System.Random();
-                    TestScene scene = entity.scene as TestScene;
-                    Vector2 pos = new Vector2(entity.position.X, entity.position.Y);
-                    //scene.createProjectile(pos, new Vector2(4, 0), new PrototypeSprite(16, 16));
-                    Sprite sprite = new Sprite(musicAttack_1);
-                    createProjectile(pos, 0f, 4f, sprite);
+                    sprite = new Sprite(musicAttack_1);
+                    ProjectileWave projectileWave = new ProjectileWave(theta, 4f, 5f);
+                    createProjectile(projectileWave, pos, sprite);
                     break;
+                case 1:
+                    sprite = new Sprite(musicAttack_1);
+                    ProjectileLinear projectileLinear = new ProjectileLinear(theta, 4f, 5f);
+                    createProjectile(projectileLinear, pos, sprite);
+                    break;
+
             }
         }
 
-        public Entity createProjectile(Vector2 pos, float theta, float velocity, Sprite sprite) {
+        public Entity createProjectile(ProjectileController controller, Vector2 pos, Sprite sprite) {
             // Entity entity = createEntity("Entity");
-            ProjectileWave waveProjectileController = new ProjectileWave();
-            ProjectileEntity waveProjectile = new ProjectileEntity(waveProjectileController, ProjectileType.WAVE);
+            ProjectileEntity waveProjectile = new ProjectileEntity(controller, ProjectileType.WAVE);
 
             //Hardcoding position adjustments
             //pos.X += 16;
             waveProjectile.position = pos;
-            
-            waveProjectileController.velocity = velocity * Game1.TILE_SIZE;
-            waveProjectileController.theta = theta;
 
             //Attach Sprite
             sprite.setRenderLayer(1);
             waveProjectile.addComponent<Sprite>(sprite);
 
             //Attack physics
-            PhysicsHandler physicsHandler = new PhysicsHandler(waveProjectileController.collisionResult);
+            PhysicsHandler physicsHandler = new PhysicsHandler(controller.collisionResult);
             physicsHandler.isProjectile = true;
             physicsHandler.applyGravity = false;
             waveProjectile.addComponent<PhysicsHandler>(physicsHandler);
