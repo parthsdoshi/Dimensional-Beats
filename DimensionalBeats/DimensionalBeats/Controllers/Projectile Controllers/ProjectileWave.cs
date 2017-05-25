@@ -1,6 +1,7 @@
 ﻿using DimensionalBeats.Entities;
 using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Tiled;
 
 namespace DimensionalBeats.Controllers.Projectile_Controllers {
     class ProjectileWave : ProjectileController, IUpdatable{
@@ -26,9 +27,10 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
             Vector2 lineVector = new Vector2(deltaX, deltaY);
             Vector2 pulseVector = new Vector2(-deltaY, deltaX) * Mathf.sin(_deltaTheta);
 
-            //Destroy if movement is stopped
-            if (_mover.move((lineVector + pulseVector) * Time.deltaTime, out res))
-                entity.destroy();
+            //Move and check collision
+            if (_mover.move((lineVector + pulseVector) * Time.deltaTime, out res)) {
+                checkForCollision(res);
+            }
 
             _deltaTheta += Mathf.deg2Rad * 15;
             if (_deltaTheta >= MathHelper.TwoPi) _deltaTheta = 0;
