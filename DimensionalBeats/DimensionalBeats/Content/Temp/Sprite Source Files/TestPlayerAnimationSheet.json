@@ -1,22 +1,6 @@
 { "frames": {
-   "TestPlayerAnimationSheet 0.ase": {
+   "TestPlayerAnimationSheet.ase": {
     "frame": { "x": 0, "y": 0, "w": 128, "h": 256 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 256 },
-    "sourceSize": { "w": 128, "h": 256 },
-    "duration": 100
-   },
-   "TestPlayerAnimationSheet 1.ase": {
-    "frame": { "x": 128, "y": 0, "w": 128, "h": 256 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 256 },
-    "sourceSize": { "w": 128, "h": 256 },
-    "duration": 100
-   },
-   "TestPlayerAnimationSheet 2.ase": {
-    "frame": { "x": 256, "y": 0, "w": 128, "h": 256 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 256 },
@@ -29,7 +13,7 @@
   "version": "1.1.13-dev",
   "image": "C:\\Users\\David Tu\\Documents\\Dimensional Beats\\Dimensional-Beats\\DimensionalBeats\\DimensionalBeats\\Content\\Temp\\Sprite Source Files\\TestPlayerAnimationSheet.png",
   "format": "RGBA8888",
-  "size": { "w": 384, "h": 256 },
+  "size": { "w": 128, "h": 256 },
   "scale": "1",
   "frameTags": [
   ],
