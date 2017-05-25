@@ -13,6 +13,7 @@
 /reference:..\..\..\Nez.PipelineImporter\bin\Debug\Ionic.ZLib.dll
 /reference:..\..\..\Nez.PipelineImporter\bin\Debug\Newtonsoft.Json.dll
 /reference:..\..\..\Nez.PipelineImporter\bin\Debug\Nez.PipelineImporter.dll
+/reference:..\..\..\Nez.PipelineImporter\bin\Debug\Nez.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -270,4 +271,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Temp/TestPlayerAnimationFiles/Run/Run_4.png
+
+#begin Temp/TestingAtlas.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Temp/TestingAtlas.xml
 

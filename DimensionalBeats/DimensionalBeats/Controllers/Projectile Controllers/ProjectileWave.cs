@@ -17,6 +17,7 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
             this._theta = theta;
             this._velocity = velocity;
             _deltaTheta = 0;
+            Debug.log("Projectile Wave created with angle of: " + theta);
         }
 
         public void update() {
@@ -32,8 +33,13 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
                 checkForCollision(res);
             }
 
-            _deltaTheta -= Mathf.deg2Rad * 15;
-            if (_deltaTheta <= 0) _deltaTheta = MathHelper.TwoPi;
+            if (_theta < MathHelper.Pi/2 && _theta > -MathHelper.Pi / 2) {
+                _deltaTheta -= Mathf.deg2Rad * 15;
+                if (_deltaTheta <= 0) _deltaTheta = MathHelper.TwoPi;
+            } else {
+                _deltaTheta += Mathf.deg2Rad * 15;
+                if (_deltaTheta >= MathHelper.TwoPi) _deltaTheta = 0;
+            }
 
             //Destroy after lifespan
             _lifespan -= Time.deltaTime;

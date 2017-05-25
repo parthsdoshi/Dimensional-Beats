@@ -8,10 +8,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Nez.Sprites;
 using DimensionalBeats.Scenes;
 using System;
+using Nez.TextureAtlases;
+using Nez.Textures;
 
 namespace DimensionalBeats.Controllers {
 
     class PlayerController : Controller, IUpdatable {
+        enum Animations {
+            IDLE, RUN, ATTACK_IDLE, ATTACK_RUN
+        }
+
         private InputHandler _inputHandler;
         private PhysicsHandler _physicsHandler;
 
@@ -20,27 +26,41 @@ namespace DimensionalBeats.Controllers {
         public TiledMapMover.CollisionState collisionState { get; }
 
         private short activeAbility;
+        private TextureAtlas atlas;
+        private Sprite<Animations> _animations;
         private Texture2D musicAttack_1;
 
         public PlayerController() : base() {
+            activeAbility = 0;
+            _animations = new Sprite<Animations>();
             collisionState = new TiledMapMover.CollisionState();
         }
         
         public override void onAddedToEntity() {
             base.onAddedToEntity();
+            loadContent();
+
             _boxCollider = entity.getComponent<BoxCollider>();
             _mover = entity.getComponent<TiledMapMover>();
             _physicsHandler = entity.getComponent<PhysicsHandler>();
 
             _inputHandler = new InputHandler();
-
-            activeAbility = 0;
-            loadContent();
         }
     
         public void loadContent() {
             //Implement later
             musicAttack_1 = entity.scene.content.Load<Texture2D>("Temp/MusicSprite1");
+
+            //Load texture atlas
+            //atlas = entity.scene.content.Load<TextureAtlas>("Temp/TestingAtlas");
+
+            //Load animations
+            /*
+            _animations.addAnimation(Animations.IDLE, atlas.getSpriteAnimation("Idle"));
+            _animations.addAnimation(Animations.RUN, atlas.getSpriteAnimation("Run"));
+            _animations.addAnimation(Animations.ATTACK_IDLE, atlas.getSpriteAnimation("Attack_Idle"));
+            _animations.addAnimation(Animations.ATTACK_RUN, atlas.getSpriteAnimation("Attack_Run"));
+            */
             Debug.log("Content loaded");
         }
 
@@ -74,24 +94,42 @@ namespace DimensionalBeats.Controllers {
                     break;
                 case 1: //Up Right
                     dir = new Vector2(1, -1);
+                    if (_animations.flipX)
+                        _animations.flipX = false;
+                    //_animations.play(Animations.RUN);
                     break;
                 case 2: //Right
                     dir = new Vector2(1, 0);
+                    if (_animations.flipX)
+                        _animations.flipX = false;
+                    //_animations.play(Animations.RUN);
                     break;
                 case 3: //Down Right
                     dir = new Vector2(1, 1);
+                    if (_animations.flipX)
+                        _animations.flipX = false;
+                    //_animations.play(Animations.RUN);
                     break;
                 case 4: //Down
                     dir = new Vector2(0, 1);
                     break;
                 case 5: //Down Left
                     dir = new Vector2(-1, 1);
+                    if (!_animations.flipX)
+                        _animations.flipX = true;
+                    _animations.play(Animations.RUN);
                     break;
                 case 6: //Left
                     dir = new Vector2(-1, 0);
+                    if (!_animations.flipX)
+                        _animations.flipX = true;
+                    //_animations.play(Animations.RUN);
                     break;
                 case 7: //Up Left
                     dir = new Vector2(-1, -1);
+                    if (!_animations.flipX)
+                        _animations.flipX = true;
+                    //_animations.play(Animations.RUN);
                     break;
                 case -1: //Non-movement command
                     dir = new Vector2(0, 0);
@@ -100,6 +138,9 @@ namespace DimensionalBeats.Controllers {
                     dir = new Vector2(0, 0);
                     break;
             }
+
+            //if (dir.X == 0 && dir.Y == 0 && collisionState.below)
+                //_animations.play(Animations.IDLE);
 
             _mover.move(_physicsHandler.calculateMovement(dir, eventHandler), _boxCollider, collisionState);
         }
@@ -116,12 +157,16 @@ namespace DimensionalBeats.Controllers {
                     sprite = new Sprite(musicAttack_1);
                     sprite.setRenderLayer(1);
                     ProjectileWave projectileWave = new ProjectileWave(theta, 4f, 5f);
+
+                    //_animations.play(Animations.ATTACK_IDLE);
                     createProjectile("Wave_Projectile", projectileWave, pos, ref sprite);
                     break;
                 case 1:
                     sprite = new Sprite(musicAttack_1);
                     sprite.setRenderLayer(1);
                     ProjectileLinear projectileLinear = new ProjectileLinear(theta, 4f, 5f);
+
+                    //_animations.play(Animations.ATTACK_IDLE);
                     createProjectile("Linear_Projectile", projectileLinear, pos, ref sprite);
                     break;
 
