@@ -114,11 +114,13 @@ namespace DimensionalBeats.Controllers {
             switch (type) {
                 case 0:
                     sprite = new Sprite(musicAttack_1);
+                    sprite.setRenderLayer(1);
                     ProjectileWave projectileWave = new ProjectileWave(theta, 4f, 5f);
                     createProjectile("Wave_Projectile", projectileWave, pos, ref sprite);
                     break;
                 case 1:
                     sprite = new Sprite(musicAttack_1);
+                    sprite.setRenderLayer(1);
                     ProjectileLinear projectileLinear = new ProjectileLinear(theta, 4f, 5f);
                     createProjectile("Linear_Projectile", projectileLinear, pos, ref sprite);
                     break;

@@ -30,11 +30,13 @@ namespace DimensionalBeats.Scenes
             Entity tiledEntity = createEntity("tiled-map");
             PlayerController playerController = new PlayerController();
             Sprite playerSprite = new Sprite(content.Load<Texture2D>("Temp/TestingSprite"));
+            playerSprite.setRenderLayer(1);
 
             //Load map here************************************************************
             TiledMap map = content.Load<TiledMap>("Temp/TestingWorld");
             TiledObject spawn = map.getObjectGroup("SpawnPoint").objectWithName("Spawn");
             TiledMapComponent mapComponent = new TiledMapComponent(map, "Ground");
+            mapComponent.setRenderLayer(2);
             tiledEntity.addComponent(mapComponent);
 
             //Create player Entity

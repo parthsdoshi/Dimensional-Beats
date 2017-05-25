@@ -308,7 +308,10 @@ namespace Nez.Tiled
 							checkedIndexes[index] = false;
 						}
 
-						return new Rectangle( startX * tiledMap.tileWidth, startY * tiledMap.tileHeight, ( endX - startX ) * tiledMap.tileWidth, ( y - startY ) * tiledMap.tileHeight );
+						return new Rectangle( startX * tiledMap.tileWidth,
+                                            startY * tiledMap.tileHeight,
+                                            ( endX - startX ) * tiledMap.tileWidth,
+                                            ( y - startY ) * tiledMap.tileHeight );
 					}
 
 					checkedIndexes[index] = true;

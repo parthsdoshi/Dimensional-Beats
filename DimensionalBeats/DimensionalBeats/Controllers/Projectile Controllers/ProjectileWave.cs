@@ -32,8 +32,8 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
                 checkForCollision(res);
             }
 
-            _deltaTheta += Mathf.deg2Rad * 15;
-            if (_deltaTheta >= MathHelper.TwoPi) _deltaTheta = 0;
+            _deltaTheta -= Mathf.deg2Rad * 15;
+            if (_deltaTheta <= 0) _deltaTheta = MathHelper.TwoPi;
 
             //Destroy after lifespan
             _lifespan -= Time.deltaTime;
