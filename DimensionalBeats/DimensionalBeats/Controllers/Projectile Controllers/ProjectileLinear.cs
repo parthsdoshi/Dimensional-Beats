@@ -12,8 +12,6 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
             this._theta = theta;
             this._velocity = velocity;
             this._lifespan = lifespan;
-
-            Debug.log("Creating linear projectile at theta: " + -Mathf.rad2Deg * theta);
         }
 
         public override void onAddedToEntity() {
@@ -22,8 +20,6 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
         }
 
         public void update() {
-            Debug.log("LinearProjectile Y: " + entity.position.Y);
-
             CollisionResult res;
 
             float deltaX = _velocity * Game1.TILE_SIZE * Mathf.cos(_theta) * Time.deltaTime;

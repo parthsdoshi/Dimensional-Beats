@@ -44,6 +44,10 @@ namespace DimensionalBeats.Helper{
                 Debug.log("Event registered: Ability 2");
                 return 2;
             }
+            if (Input.leftMouseButtonPressed) {
+                Debug.log("Event registered: Fire ability");
+                return 10;
+            }
             return -1;
         }
 
@@ -51,7 +55,7 @@ namespace DimensionalBeats.Helper{
         public float getMouseDirectionInRad(Vector2 pos) {
             float x = Input.scaledMousePosition.X - pos.X;
             float y = Input.scaledMousePosition.Y - pos.Y;
-            Debug.log("getMouseDirectionInRad() - X: " + x + " Y: " + y);
+
             return Mathf.atan2(y, x);
         }
 

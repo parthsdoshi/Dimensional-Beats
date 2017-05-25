@@ -19,6 +19,7 @@ namespace DimensionalBeats.Controllers {
         private TiledMapMover _mover;
         public TiledMapMover.CollisionState collisionState { get; }
 
+        private short activeAbility;
         private Texture2D musicAttack_1;
 
         public PlayerController() : base() {
@@ -32,6 +33,8 @@ namespace DimensionalBeats.Controllers {
             _physicsHandler = entity.getComponent<PhysicsHandler>();
 
             _inputHandler = new InputHandler();
+
+            activeAbility = 0;
             loadContent();
         }
     
@@ -53,10 +56,13 @@ namespace DimensionalBeats.Controllers {
                     //Tweak physicsHandler later to incorporate jump here
                     break;
                 case 1: //Ability 1
-                    useAbility(0);
+                    activeAbility = 0;
                     break;
                 case 2: //Ability 2
-                    useAbility(1);
+                    activeAbility = 1;
+                    break;
+                case 10: //Fire ability
+                    useAbility(activeAbility);
                     break;
             }
 

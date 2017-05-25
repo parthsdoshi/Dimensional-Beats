@@ -16,8 +16,6 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
             this._theta = theta;
             this._velocity = velocity;
             _deltaTheta = 0;
-
-            Debug.log("Creating wave projectile at theta: " + -Mathf.rad2Deg * theta);
         }
 
         public void update() {
