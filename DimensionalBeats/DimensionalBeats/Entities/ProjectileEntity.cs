@@ -9,9 +9,9 @@ namespace DimensionalBeats.Entities {
     class ProjectileEntity : Entity{
         private ProjectileType _type;
 
-        public ProjectileEntity(Controller projectileController, ProjectileType type) : base(){
+        public ProjectileEntity(string name, Controller projectileController, ProjectileType type) : base(name){
+            this._type = type;
             addComponent<Controller>(projectileController);
-            //transform.scale = new Vector2(.5f, .5f);
         }
     }
 }

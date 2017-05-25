@@ -13,6 +13,7 @@ namespace DimensionalBeats.Entities {
 
         protected bool _currentState;
 
+        //Testing purposes
         public CookieCutterEntity(Vector2 position) : base() {
             addComponent<Sprite>(new PrototypeSprite(16, 16)).setColor(Color.Red);
             this.position = position;
@@ -21,8 +22,7 @@ namespace DimensionalBeats.Entities {
             isMovingRight = false;
         }
 
-        public CookieCutterEntity(String name, Vector2 position, Sprite sprite, Controller controller) : base(name) {
-            this.name = name;
+        public CookieCutterEntity(String name, Vector2 position, ref Sprite sprite, Controller controller) : base(name) {
             this.position = position;
             addComponent<Sprite>(sprite);
             addComponent<Controller>(controller);

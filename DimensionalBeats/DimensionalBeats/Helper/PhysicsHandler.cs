@@ -5,6 +5,8 @@ using Nez.Tiled;
 
 namespace DimensionalBeats.Helper {
     class PhysicsHandler : Component{
+
+        #region VARIABLES
         private const float _GRAVITY = 9.8f;
         private CookieCutterEntity _cookieCutterEntity;
 
@@ -26,6 +28,7 @@ namespace DimensionalBeats.Helper {
 
         private TiledMapMover.CollisionState _collisionState;
         private CollisionResult _collisionResult;
+        #endregion
 
         public PhysicsHandler(CookieCutterEntity entity, TiledMapMover.CollisionState collisionState, float mass, float friction = .3f) : base() {
             this._cookieCutterEntity = entity;
@@ -34,9 +37,7 @@ namespace DimensionalBeats.Helper {
             this._friction = friction;
 
             //Default values (units in per Tile)
-            jumpHeight = .8f;
-            //jumpTimer = 0;
-            //jumpDelay = .2f;
+            jumpHeight = 1f;
             maxVelocity = 2.5f;
             moveSpeed = 16f;
             applyGravity = true;

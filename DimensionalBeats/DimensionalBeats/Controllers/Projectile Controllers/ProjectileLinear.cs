@@ -12,14 +12,24 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
             this._theta = theta;
             this._velocity = velocity;
             this._lifespan = lifespan;
+
+            Debug.log("Creating linear projectile at theta: " + -Mathf.rad2Deg * theta);
+        }
+
+        public override void onAddedToEntity() {
+            base.onAddedToEntity();
+            
         }
 
         public void update() {
+            Debug.log("LinearProjectile Y: " + entity.position.Y);
+
             CollisionResult res;
 
-            float deltaX = _velocity * Game1.TILE_SIZE * Mathf.cos(_theta);
-            float deltaY = _velocity * Game1.TILE_SIZE * Mathf.sin(_theta);
-            if(_mover.move(new Vector2(deltaX, deltaY) * Time.deltaTime, out res))
+            float deltaX = _velocity * Game1.TILE_SIZE * Mathf.cos(_theta) * Time.deltaTime;
+            float deltaY = _velocity * Game1.TILE_SIZE * Mathf.sin(_theta) * Time.deltaTime;
+
+            if(_mover.move(new Vector2(deltaX, deltaY), out res))
                 entity.destroy();
 
             _lifespan -= Time.deltaTime;

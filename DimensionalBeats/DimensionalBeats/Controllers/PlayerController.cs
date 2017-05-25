@@ -7,6 +7,7 @@ using DimensionalBeats.Controllers.Projectile_Controllers;
 using Microsoft.Xna.Framework.Graphics;
 using Nez.Sprites;
 using DimensionalBeats.Scenes;
+using System;
 
 namespace DimensionalBeats.Controllers {
 
@@ -40,6 +41,7 @@ namespace DimensionalBeats.Controllers {
             Debug.log("Content loaded");
         }
 
+        //Handle controls and movement
         public void update() {
             if (entity == null) return;
 
@@ -102,25 +104,25 @@ namespace DimensionalBeats.Controllers {
             Sprite sprite;
             //Get relative direction of mouse
             float theta = _inputHandler.getMouseDirectionInRad(scene.camera.worldToScreenPoint(pos));
-            Debug.log("Creating projectile at theta: " + theta);
+
             switch (type) {
                 case 0:
                     sprite = new Sprite(musicAttack_1);
                     ProjectileWave projectileWave = new ProjectileWave(theta, 4f, 5f);
-                    createProjectile(projectileWave, pos, sprite);
+                    createProjectile("Wave_Projectile", projectileWave, pos, ref sprite);
                     break;
                 case 1:
                     sprite = new Sprite(musicAttack_1);
                     ProjectileLinear projectileLinear = new ProjectileLinear(theta, 4f, 5f);
-                    createProjectile(projectileLinear, pos, sprite);
+                    createProjectile("Linear_Projectile", projectileLinear, pos, ref sprite);
                     break;
 
             }
         }
 
-        public Entity createProjectile(ProjectileController controller, Vector2 pos, Sprite sprite) {
+        public Entity createProjectile(string name, ProjectileController controller, Vector2 pos, ref Sprite sprite) {
             // Entity entity = createEntity("Entity");
-            ProjectileEntity waveProjectile = new ProjectileEntity(controller, ProjectileType.WAVE);
+            ProjectileEntity waveProjectile = new ProjectileEntity(name, controller, ProjectileType.WAVE);
 
             //Hardcoding position adjustments
             //pos.X += 16;
@@ -139,8 +141,8 @@ namespace DimensionalBeats.Controllers {
             //Attach hit detection
             CircleCollider circleCollider = new CircleCollider(sprite.width);
             waveProjectile.addComponent<CircleCollider>(circleCollider);
-            Flags.setFlagExclusive(ref circleCollider.collidesWithLayers, 0);
-            Flags.setFlagExclusive(ref circleCollider.physicsLayer, 1);
+            Flags.setFlagExclusive(ref circleCollider.collidesWithLayers, 0); //Prevent collisions on layer 0
+            Flags.setFlagExclusive(ref circleCollider.physicsLayer, 1); // 
 
             //Attack mover
             Mover mover = new Mover();

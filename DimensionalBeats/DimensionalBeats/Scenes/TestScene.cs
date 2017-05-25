@@ -38,7 +38,7 @@ namespace DimensionalBeats.Scenes
             tiledEntity.addComponent(mapComponent);
 
             //Create player Entity
-            CookieCutterEntity player = new CookieCutterEntity("Player", spawn.position, playerSprite, playerController);
+            CookieCutterEntity player = new CookieCutterEntity("Player", spawn.position, ref playerSprite, playerController);
 
             //Add camera to player
             FollowCamera camera = new FollowCamera(player);
@@ -51,7 +51,7 @@ namespace DimensionalBeats.Scenes
             player.addComponent<TiledMapMover>(new TiledMapMover(map.getLayer<TiledTileLayer>("Ground")));
             player.addComponent<BoxCollider>(collider);
             player.addComponent<PhysicsHandler>(new PhysicsHandler(player, playerController.collisionState, 20f, .5f));
-            Flags.setFlagExclusive(ref collider.collidesWithLayers, 0);
+            Flags.setFlagExclusive(ref collider.collidesWithLayers, 0); //Prevent collisions with projectiles
             Flags.setFlagExclusive(ref collider.physicsLayer, 1);
 
             this.addEntity<Entity> (player);
