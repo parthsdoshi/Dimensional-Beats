@@ -26,7 +26,7 @@ namespace DimensionalBeats.Controllers {
         public TiledMapMover.CollisionState collisionState { get; }
 
         private short activeAbility;
-        private TextureAtlas atlas;
+        //private TextureAtlas atlas;
         private Sprite<Animations> _animations;
         private Texture2D musicAttack_1;
 
@@ -117,7 +117,7 @@ namespace DimensionalBeats.Controllers {
                     dir = new Vector2(-1, 1);
                     if (!_animations.flipX)
                         _animations.flipX = true;
-                    _animations.play(Animations.RUN);
+                    //_animations.play(Animations.RUN);
                     break;
                 case 6: //Left
                     dir = new Vector2(-1, 0);
@@ -156,7 +156,7 @@ namespace DimensionalBeats.Controllers {
                 case 0:
                     sprite = new Sprite(musicAttack_1);
                     sprite.setRenderLayer(1);
-                    ProjectileWave projectileWave = new ProjectileWave(theta, 4f, 5f);
+                    ProjectileWave projectileWave = new ProjectileWave(theta, 8f, 5f);
 
                     //_animations.play(Animations.ATTACK_IDLE);
                     createProjectile("Wave_Projectile", projectileWave, pos, ref sprite);
@@ -164,7 +164,7 @@ namespace DimensionalBeats.Controllers {
                 case 1:
                     sprite = new Sprite(musicAttack_1);
                     sprite.setRenderLayer(1);
-                    ProjectileLinear projectileLinear = new ProjectileLinear(theta, 4f, 5f);
+                    ProjectileLinear projectileLinear = new ProjectileLinear(theta, 8f, 5f);
 
                     //_animations.play(Animations.ATTACK_IDLE);
                     createProjectile("Linear_Projectile", projectileLinear, pos, ref sprite);

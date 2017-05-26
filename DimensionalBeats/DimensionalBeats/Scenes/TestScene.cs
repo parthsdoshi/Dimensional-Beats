@@ -29,7 +29,7 @@ namespace DimensionalBeats.Scenes
 
             Entity tiledEntity = createEntity("tiled-map");
             PlayerController playerController = new PlayerController();
-            Sprite playerSprite = new Sprite(content.Load<Texture2D>("Temp/TestingSprite"));
+            Sprite playerSprite = new Sprite(content.Load<Texture2D>("Temp/TestPlayerAnimationFiles/Idle/Idle_1"));
             playerSprite.setRenderLayer(1);
 
             //Load map here************************************************************

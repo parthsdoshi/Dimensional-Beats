@@ -25,12 +25,12 @@ namespace Nez
 		}
 
 
-		#region properties and fields
+        #region properties and fields
 
-		/// <summary>
-		/// if true, everytime position is set it will be rounded automatically
-		/// </summary>
-		public static bool shouldRoundPosition = true;
+        /// <summary>
+        /// if true, everytime position is set it will be rounded automatically
+        /// </summary>
+        public static bool shouldRoundPosition = false;
 
 		/// <summary>
 		/// the Entity associated with this transform

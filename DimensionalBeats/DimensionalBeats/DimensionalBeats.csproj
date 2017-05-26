@@ -43,6 +43,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\Enemy Controller\EnemyController.cs" />
+    <Compile Include="Controllers\Enemy Controller\EnemyMeleeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\Projectile Controllers\ProjectileLinear.cs" />
     <Compile Include="Controllers\Projectile Controllers\ProjectileController.cs" />

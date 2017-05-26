@@ -37,7 +37,7 @@ namespace DimensionalBeats.Helper {
             this._friction = friction;
 
             //Default values (units in per Tile)
-            jumpHeight = 1f;
+            jumpHeight = .8f;
             maxVelocity = 2.5f;
             moveSpeed = 16f;
             applyGravity = true;
