@@ -24,6 +24,7 @@ namespace DimensionalBeats.Entities {
 
         public CookieCutterEntity(String name, Vector2 position, ref Sprite sprite, Controller controller) : base(name) {
             this.position = position;
+            sprite.setEnabled(false);
             addComponent<Sprite>(sprite);
             addComponent<Controller>(controller);
 

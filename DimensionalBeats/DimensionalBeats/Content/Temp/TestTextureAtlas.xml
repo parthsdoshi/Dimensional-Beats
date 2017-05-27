@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:ns="Microsoft.Xna.Framework">
   <Asset Type="System.String[]">
-	<Item>TestPlayerAnimationFiles/</Item>
-	<Item>TestPlayerAnimationFiles/Idle/Idle_1.png</Item>
+	<Item>TestPlayerAnimationFiles/Runs</Item>
+	<Item>TestPlayerAnimationFiles/Idle</Item>
+	<Item>TestPlayerAnimationFiles/Attack_Run</Item>
+	<Item>TestPlayerAnimationFiles/Attack_Idle</Item>
   </Asset>
 </XnaContent>

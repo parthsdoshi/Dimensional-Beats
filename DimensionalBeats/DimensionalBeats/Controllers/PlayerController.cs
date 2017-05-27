@@ -10,6 +10,7 @@ using DimensionalBeats.Scenes;
 using System;
 using Nez.TextureAtlases;
 using Nez.Textures;
+using System.Collections.Generic;
 
 namespace DimensionalBeats.Controllers {
 
@@ -26,13 +27,11 @@ namespace DimensionalBeats.Controllers {
         public TiledMapMover.CollisionState collisionState { get; }
 
         private short activeAbility;
-        //private TextureAtlas atlas;
         private Sprite<Animations> _animations;
         private Texture2D musicAttack_1;
 
         public PlayerController() : base() {
             activeAbility = 0;
-            _animations = new Sprite<Animations>();
             collisionState = new TiledMapMover.CollisionState();
         }
         
@@ -51,10 +50,40 @@ namespace DimensionalBeats.Controllers {
             //Implement later
             musicAttack_1 = entity.scene.content.Load<Texture2D>("Temp/MusicSprite1");
 
-            //Load texture atlas
-            //atlas = entity.scene.content.Load<TextureAtlas>("Temp/TestingAtlas");
+            //Splits spritesheet into subtextures
+            Texture2D texture = entity.scene.content.Load<Texture2D>("Temp/TestPlayerAnimationSheet");
+            List<Subtexture> subtextures = Subtexture.subtexturesFromAtlas(texture, 16, 32);
+            _animations = entity.addComponent(new Sprite<Animations>(subtextures[0]));
 
             //Load animations
+            //Idle animation
+            _animations.addAnimation(Animations.IDLE, new SpriteAnimation(new List<Subtexture>() {
+                subtextures[0],
+                subtextures[1]
+            }));
+
+            //Run animation
+            _animations.addAnimation(Animations.RUN, new SpriteAnimation(new List<Subtexture>() {
+                subtextures[8],
+                subtextures[9],
+                subtextures[10],
+                subtextures[11]
+            }));
+
+            //Attack Idle animation
+            _animations.addAnimation(Animations.ATTACK_IDLE, new SpriteAnimation(new List<Subtexture>() {
+                subtextures[16],
+                subtextures[17],
+                subtextures[18]
+            }));
+
+            //Attack Run animation
+            _animations.addAnimation(Animations.ATTACK_RUN, new SpriteAnimation(new List<Subtexture>() {
+                subtextures[24],
+                subtextures[25],
+                subtextures[26],
+                subtextures[27]
+            }));
             /*
             _animations.addAnimation(Animations.IDLE, atlas.getSpriteAnimation("Idle"));
             _animations.addAnimation(Animations.RUN, atlas.getSpriteAnimation("Run"));
@@ -96,19 +125,22 @@ namespace DimensionalBeats.Controllers {
                     dir = new Vector2(1, -1);
                     if (_animations.flipX)
                         _animations.flipX = false;
-                    //_animations.play(Animations.RUN);
+                    if (!_animations.isAnimationPlaying(Animations.RUN))
+                        _animations.play(Animations.RUN);
                     break;
                 case 2: //Right
                     dir = new Vector2(1, 0);
                     if (_animations.flipX)
                         _animations.flipX = false;
-                    //_animations.play(Animations.RUN);
+                    if (!_animations.isAnimationPlaying(Animations.RUN))
+                        _animations.play(Animations.RUN);
                     break;
                 case 3: //Down Right
                     dir = new Vector2(1, 1);
                     if (_animations.flipX)
                         _animations.flipX = false;
-                    //_animations.play(Animations.RUN);
+                    if (!_animations.isAnimationPlaying(Animations.RUN))
+                        _animations.play(Animations.RUN);
                     break;
                 case 4: //Down
                     dir = new Vector2(0, 1);
@@ -117,19 +149,22 @@ namespace DimensionalBeats.Controllers {
                     dir = new Vector2(-1, 1);
                     if (!_animations.flipX)
                         _animations.flipX = true;
-                    //_animations.play(Animations.RUN);
+                    if (!_animations.isAnimationPlaying(Animations.RUN))
+                        _animations.play(Animations.RUN);
                     break;
                 case 6: //Left
                     dir = new Vector2(-1, 0);
                     if (!_animations.flipX)
                         _animations.flipX = true;
-                    //_animations.play(Animations.RUN);
+                    if (!_animations.isAnimationPlaying(Animations.RUN))
+                        _animations.play(Animations.RUN);
                     break;
                 case 7: //Up Left
                     dir = new Vector2(-1, -1);
                     if (!_animations.flipX)
                         _animations.flipX = true;
-                    //_animations.play(Animations.RUN);
+                    if (!_animations.isAnimationPlaying(Animations.RUN))
+                        _animations.play(Animations.RUN);
                     break;
                 case -1: //Non-movement command
                     dir = new Vector2(0, 0);
@@ -139,8 +174,9 @@ namespace DimensionalBeats.Controllers {
                     break;
             }
 
-            //if (dir.X == 0 && dir.Y == 0 && collisionState.below)
-                //_animations.play(Animations.IDLE);
+            if (dir.X == 0 && dir.Y == 0 && collisionState.below && !_animations.isAnimationPlaying(Animations.IDLE)) {
+                _animations.play(Animations.IDLE);
+            }
 
             _mover.move(_physicsHandler.calculateMovement(dir, eventHandler), _boxCollider, collisionState);
         }
