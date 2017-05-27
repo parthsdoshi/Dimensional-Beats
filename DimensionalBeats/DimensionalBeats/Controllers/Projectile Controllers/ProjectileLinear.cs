@@ -3,15 +3,7 @@ using Nez;
 
 namespace DimensionalBeats.Controllers.Projectile_Controllers {
     class ProjectileLinear : ProjectileController, IUpdatable{
-
-        private float _theta;
-        private float _velocity;
-        private float _lifespan;
-
-        public ProjectileLinear(float theta, float velocity, float lifespan) : base(){
-            this._theta = theta;
-            this._velocity = velocity;
-            this._lifespan = lifespan;
+        public ProjectileLinear(float theta, float velocity, float lifespan) : base(theta, velocity, lifespan){
         }
 
         public override void onAddedToEntity() {

@@ -1,6 +1,7 @@
 ﻿using DimensionalBeats.Helper;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
+using Nez.AI.BehaviorTrees;
 using Nez.AI.Pathfinding;
 using Nez.Sprites;
 using Nez.Textures;
@@ -16,7 +17,8 @@ namespace DimensionalBeats.Controllers.Enemy_Controller {
         enum Animations {
             RUN, IDLE
         }
-        private WeightedGridGraph grid;
+        protected WeightedGridGraph _grid;
+        protected BehaviorTree<EnemyController> _behaviorTree;
 
         private PhysicsHandler _physicsHandler;
 
@@ -27,7 +29,7 @@ namespace DimensionalBeats.Controllers.Enemy_Controller {
         private Sprite<Animations> _animations;
 
         public EnemyController(TiledTileLayer collisionLayer) : base() {
-            grid = new WeightedGridGraph(collisionLayer);
+            _grid = new WeightedGridGraph(collisionLayer);
 
         }
 

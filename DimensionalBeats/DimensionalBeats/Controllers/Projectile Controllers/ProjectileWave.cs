@@ -5,19 +5,10 @@ using Nez.Tiled;
 
 namespace DimensionalBeats.Controllers.Projectile_Controllers {
     class ProjectileWave : ProjectileController, IUpdatable{
-
-        private float _velocity;
-        private float _theta;
         private float _deltaTheta;
 
-        private float _lifespan;
-
-        public ProjectileWave(float theta, float velocity, float lifespan) : base(){
-            this._lifespan = lifespan;
-            this._theta = theta;
-            this._velocity = velocity;
+        public ProjectileWave(float theta, float velocity, float lifespan) : base(theta, velocity, lifespan){
             _deltaTheta = 0;
-            Debug.log("Projectile Wave created with angle of: " + theta);
         }
 
         public void update() {

@@ -1,10 +1,8 @@
 ﻿using Nez;
+using Nez.AI.BehaviorTrees;
 using Nez.Tiled;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DimensionalBeats.Controllers.Enemy_Controller {
     class EnemyMeleeController : EnemyController, IUpdatable {
@@ -21,6 +19,30 @@ namespace DimensionalBeats.Controllers.Enemy_Controller {
         public EnemyMeleeController(TiledTileLayer collisionLayer) : base(collisionLayer) {
 
         }
+
+        public override void initialize() {
+            base.initialize();
+
+        }
+
+        public override void onAddedToEntity() {
+            base.onAddedToEntity();
+            buildBehaviorTree();
+            
+        }
+
+        private void buildBehaviorTree() {
+            BehaviorTreeBuilder<EnemyController> _behaviorTreeBuilder = BehaviorTreeBuilder<EnemyController>.begin(this);
+            _behaviorTreeBuilder.untilSuccess();
+            //Creates a method with input of EnemyController and output of TaskStatus
+            Func<EnemyController, TaskStatus> walk = delegate(EnemyController context) {
+                //_grid.search();
+                return TaskStatus.Running;
+            };
+
+
+            _behaviorTreeBuilder.action(walk);
+    }
 
         public void update() {
             throw new NotImplementedException();

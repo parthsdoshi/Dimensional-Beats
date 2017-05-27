@@ -16,8 +16,6 @@ namespace DimensionalBeats.Controllers {
         enum Animations {
             IDLE, RUN, ATTACK_IDLE, ATTACK_RUN
         }
-
-        private InputHandler _inputHandler;
         private PhysicsHandler _physicsHandler;
 
         private BoxCollider _boxCollider;
@@ -40,8 +38,6 @@ namespace DimensionalBeats.Controllers {
             _boxCollider = entity.getComponent<BoxCollider>();
             _mover = entity.getComponent<TiledMapMover>();
             _physicsHandler = entity.getComponent<PhysicsHandler>();
-
-            _inputHandler = new InputHandler();
         }
     
         public void loadContent() {
@@ -94,7 +90,7 @@ namespace DimensionalBeats.Controllers {
         public void update() {
             if (entity == null) return;
 
-            int eventHandler = _inputHandler.getEvent();
+            int eventHandler = InputHandler.getEvent();
 
             //Get event from keyboard
             switch (eventHandler) {
@@ -107,6 +103,9 @@ namespace DimensionalBeats.Controllers {
                 case 2: //Ability 2
                     activeAbility = 1;
                     break;
+                case 3: //Ability 2
+                    activeAbility = 2;
+                    break;
                 case 10: //Fire ability
                     useAbility(activeAbility);
                     break;
@@ -114,7 +113,7 @@ namespace DimensionalBeats.Controllers {
 
             //Use physics handler & TiledMapMover to calculate movement
             Vector2 dir;
-            switch (_inputHandler.getMovement()) {
+            switch (InputHandler.getMovement()) {
                 case 0: //Up
                     dir = new Vector2(0, -1);
                     break;
@@ -176,7 +175,6 @@ namespace DimensionalBeats.Controllers {
             }
 
             _mover.move(_physicsHandler.calculateMovement(dir, eventHandler), _boxCollider, collisionState);
-            Debug.log("PlayerController - update(): X:" + entity.position.X + " Y: " + entity.position.Y);
         }
 
         public void useAbility(short type) {
@@ -184,7 +182,7 @@ namespace DimensionalBeats.Controllers {
             Vector2 pos = new Vector2(entity.position.X, entity.position.Y);
             Sprite sprite;
             //Get relative direction of mouse
-            float theta = _inputHandler.getMouseDirectionInRad(scene.camera.worldToScreenPoint(pos));
+            float theta = InputHandler.getMouseDirectionInRad(scene.camera.worldToScreenPoint(pos));
 
             switch (type) {
                 case 0:
@@ -203,6 +201,15 @@ namespace DimensionalBeats.Controllers {
                     if (!_animations.isAnimationPlaying(Animations.ATTACK_RUN))
                         _animations.play(Animations.ATTACK_RUN);
                     createProjectile("Linear_Projectile", projectileLinear, pos, ref sprite);
+                    break;
+                case 2:
+                    sprite = new Sprite(musicAttack_1);
+                    sprite.setRenderLayer(1);
+                    MagicProjectile magicProjectile = new MagicProjectile(theta, 8f, 5f, _mover.tiledMap.getLayer<TiledTileLayer>("Ground"));
+
+                    if (!_animations.isAnimationPlaying(Animations.ATTACK_RUN))
+                        _animations.play(Animations.ATTACK_RUN);
+                    createProjectile("Magic_Projectile", magicProjectile, pos, ref sprite);
                     break;
 
             }

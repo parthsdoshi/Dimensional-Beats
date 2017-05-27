@@ -13,8 +13,15 @@ namespace DimensionalBeats.Controllers.Projectile_Controllers {
         protected Mover _mover;
         protected TiledMapComponent _mapComponent;
 
-        public ProjectileController() : base() {
+        //Projectile values
+        protected float _theta;
+        protected float _velocity;
+        protected float _lifespan;
 
+        public ProjectileController(float theta, float velocity, float lifespan) : base() {
+            this._theta = theta;
+            this._velocity = velocity;
+            this._lifespan = lifespan;
         }
 
         public override void onAddedToEntity() {

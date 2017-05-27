@@ -4,13 +4,9 @@ using Nez;
 using Microsoft.Xna.Framework;
 
 namespace DimensionalBeats.Helper{
-    class InputHandler {
+    static class InputHandler {
 
-        public InputHandler() {
-
-        }
-
-        public int getMovement() {
+        static public int getMovement() {
             KeyboardState keyboardState = Input.currentKeyboardState;
             KeyboardState previousState = Input.previousKeyboardState;
             Keys[] keysPressed = keyboardState.GetPressedKeys();
@@ -33,7 +29,7 @@ namespace DimensionalBeats.Helper{
             return -1;
         }
 
-        public int getEvent() {
+        static public int getEvent() {
             //Jump event
             if (Input.isKeyPressed(Keys.W) || Input.isKeyPressed(Keys.Space)) return 0;
             if (Input.isKeyPressed(Keys.D1) || Input.isKeyPressed(Keys.Q)) {
@@ -44,6 +40,10 @@ namespace DimensionalBeats.Helper{
                 Debug.log("Event registered: Ability 2");
                 return 2;
             }
+            if (Input.isKeyPressed(Keys.D3) || Input.isKeyPressed(Keys.R)) {
+                Debug.log("Event registered: Ability 3");
+                return 3;
+            }
             if (Input.leftMouseButtonPressed) {
                 Debug.log("Event registered: Fire ability");
                 return 10;
@@ -52,38 +52,38 @@ namespace DimensionalBeats.Helper{
         }
 
         //Get direction of mouse from player
-        public float getMouseDirectionInRad(Vector2 pos) {
+        static public float getMouseDirectionInRad(Vector2 pos) {
             float x = Input.scaledMousePosition.X - pos.X;
             float y = Input.scaledMousePosition.Y - pos.Y;
 
             return Mathf.atan2(y, x);
         }
 
-        public Boolean isLeft(KeyboardState k) {
+        static public Boolean isLeft(KeyboardState k) {
             if (k.IsKeyDown(Keys.A))
                 return true;
             return false;
         }
 
-        public Boolean isRight(KeyboardState k) {
+        static public Boolean isRight(KeyboardState k) {
             if (k.IsKeyDown(Keys.D))
                 return true;
             return false;
         }
 
-        public Boolean isUp(KeyboardState k) {
+        static public Boolean isUp(KeyboardState k) {
             if (k.IsKeyDown(Keys.W))
                 return true;
             return false;
         }
 
-        public Boolean isDown(KeyboardState k) {
+        static public Boolean isDown(KeyboardState k) {
             if (k.IsKeyDown(Keys.S))
                 return true;
             return false;
         }
 
-        public Boolean justPressed(Keys k) {
+        static public Boolean justPressed(Keys k) {
             return Input.isKeyPressed(k);
         }
     }
