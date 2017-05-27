@@ -281,7 +281,7 @@ namespace Nez.Tiled
 					{
 						// store off our last ground tile if we collided below
 						collisionState._lastGroundTile = _collidingTiles[i];
-						return true;
+                        return false;
 					}
 				}
 			}

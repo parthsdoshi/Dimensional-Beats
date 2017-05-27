@@ -7,8 +7,6 @@ using DimensionalBeats.Controllers.Projectile_Controllers;
 using Microsoft.Xna.Framework.Graphics;
 using Nez.Sprites;
 using DimensionalBeats.Scenes;
-using System;
-using Nez.TextureAtlases;
 using Nez.Textures;
 using System.Collections.Generic;
 
@@ -81,8 +79,7 @@ namespace DimensionalBeats.Controllers {
             _animations.addAnimation(Animations.ATTACK_RUN, new SpriteAnimation(new List<Subtexture>() {
                 subtextures[24],
                 subtextures[25],
-                subtextures[26],
-                subtextures[27]
+                subtextures[26]
             }));
             /*
             _animations.addAnimation(Animations.IDLE, atlas.getSpriteAnimation("Idle"));
@@ -174,11 +171,12 @@ namespace DimensionalBeats.Controllers {
                     break;
             }
 
-            if (dir.X == 0 && dir.Y == 0 && collisionState.below && !_animations.isAnimationPlaying(Animations.IDLE)) {
+            if (dir.X == 0 && dir.Y == 0 && collisionState.below && !_animations.isAnimationPlaying(Animations.IDLE) && !_animations.isAnimationPlaying(Animations.ATTACK_RUN)) {
                 _animations.play(Animations.IDLE);
             }
 
             _mover.move(_physicsHandler.calculateMovement(dir, eventHandler), _boxCollider, collisionState);
+            Debug.log("PlayerController - update(): X:" + entity.position.X + " Y: " + entity.position.Y);
         }
 
         public void useAbility(short type) {
@@ -193,8 +191,8 @@ namespace DimensionalBeats.Controllers {
                     sprite = new Sprite(musicAttack_1);
                     sprite.setRenderLayer(1);
                     ProjectileWave projectileWave = new ProjectileWave(theta, 8f, 5f);
-
-                    //_animations.play(Animations.ATTACK_IDLE);
+                    if(!_animations.isAnimationPlaying(Animations.ATTACK_RUN))
+                        _animations.play(Animations.ATTACK_RUN);
                     createProjectile("Wave_Projectile", projectileWave, pos, ref sprite);
                     break;
                 case 1:
@@ -202,7 +200,8 @@ namespace DimensionalBeats.Controllers {
                     sprite.setRenderLayer(1);
                     ProjectileLinear projectileLinear = new ProjectileLinear(theta, 8f, 5f);
 
-                    //_animations.play(Animations.ATTACK_IDLE);
+                    if (!_animations.isAnimationPlaying(Animations.ATTACK_RUN))
+                        _animations.play(Animations.ATTACK_RUN);
                     createProjectile("Linear_Projectile", projectileLinear, pos, ref sprite);
                     break;
 

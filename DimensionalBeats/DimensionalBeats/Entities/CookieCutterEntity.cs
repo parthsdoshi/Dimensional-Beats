@@ -1,6 +1,5 @@
 ﻿using System;
 using Nez;
-using DimensionalBeats.Helper;
 using Microsoft.Xna.Framework;
 using Nez.Sprites;
 using DimensionalBeats.Controllers;
@@ -11,7 +10,7 @@ namespace DimensionalBeats.Entities {
         public bool isMovingLeft { get; set; }
         public bool isMovingRight { get; set; }
 
-        protected bool _currentState;
+        //protected bool _currentState;
 
         //Testing purposes
         public CookieCutterEntity(Vector2 position) : base() {

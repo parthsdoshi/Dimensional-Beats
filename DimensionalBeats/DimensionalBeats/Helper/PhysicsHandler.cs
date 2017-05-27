@@ -30,6 +30,7 @@ namespace DimensionalBeats.Helper {
         private CollisionResult _collisionResult;
         #endregion
 
+        //Deal with entities
         public PhysicsHandler(CookieCutterEntity entity, TiledMapMover.CollisionState collisionState, float mass, float friction = .3f) : base() {
             this._cookieCutterEntity = entity;
             this._collisionState = collisionState;
@@ -47,6 +48,7 @@ namespace DimensionalBeats.Helper {
             _velocityY = 0;
         }
 
+        //Deal with projectiles
         public PhysicsHandler(CollisionResult collisionResult, float mass = 10f) : base() {
             this._collisionResult = collisionResult;
             this._mass = mass;
@@ -76,9 +78,12 @@ namespace DimensionalBeats.Helper {
                 _deltaX = Mathf.cos(theta) * moveSpeed * Time.deltaTime;
                 if(isProjectile)
                     _deltaY = Mathf.sin(theta) * moveSpeed * Time.deltaTime;
+
+                //Apply forces
                 applyForce(new Vector2(_deltaX, _deltaY));
             }
 
+            //Deal with triggers here
             switch (trigger) {
                 //Jump trigger
                 case 0:
@@ -92,23 +97,27 @@ namespace DimensionalBeats.Helper {
                 default:
                     break;
             }
+
+            //Set entity movement direction
             _cookieCutterEntity.isMovingLeft = (_velocityX < 0) ? true : false;
             _cookieCutterEntity.isMovingRight = (_velocityX > 0) ? true : false;
 
             /*Calculate friction
              * V = V0 - at
              */
-            if (!_cookieCutterEntity.isMovingRight && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX + ((_friction * _GRAVITY) * Time.deltaTime), -maxVelocity, 0);
-            else if(!_cookieCutterEntity.isMovingLeft && _velocityX != 0) _velocityX = Mathf.clamp(_velocityX - ((_friction * _GRAVITY) * Time.deltaTime), 0, maxVelocity);
+
+            if (_cookieCutterEntity.isMovingLeft) _velocityX = Mathf.clamp(_velocityX + ((_friction * _GRAVITY) * Time.deltaTime), -maxVelocity, 0);
+            else if(_cookieCutterEntity.isMovingRight) _velocityX = Mathf.clamp(_velocityX - ((_friction * _GRAVITY) * Time.deltaTime), 0, maxVelocity);
+            
 
             if (Mathf.approximately(0, _velocityX)) _velocityX = 0;
             //Check statements
-            /*
+            
             if (_collisionState.left || _collisionState.right) {
                 _velocityX = 0;
                 Debug.log("Clamp vX");
             }
-            */
+
             if (_collisionState.below) {
                 //jumpTimer = Mathf.clamp(jumpTimer + Time.deltaTime, 0, jumpDelay);
                 if(_velocityY >= 0) _velocityY = 0;

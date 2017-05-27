@@ -1,4 +1,5 @@
 ﻿using Nez;
+using Nez.Tiled;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace DimensionalBeats.Controllers.Enemy_Controller {
         private float _health { get; }
         private float _damage { get; }
 
-        public EnemyMeleeController() : base() {
+        public EnemyMeleeController(TiledTileLayer collisionLayer) : base(collisionLayer) {
 
         }
 
