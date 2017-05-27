@@ -2,7 +2,7 @@
 ## **NOTHING HAS BEEN FLESHED OUT YET -- FEEL FREE TO ADD ON**
 
 ## **Story**
-TODO: *Written down but not typed up yet*
+Main character comes from small village near four countries divided by music. He/she wants to prove that his/her town's genre of music is the best and embarks on a journey to take down the other countries.
 
 ## **Mechanics**
 ### **Core Mechanic(s):** 
