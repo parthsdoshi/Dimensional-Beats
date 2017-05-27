@@ -1,6 +1,8 @@
 # Dimensional Beats
+
 ## Story and Mechanics and Other Links
-[Google Doc](https://docs.google.com/document/d/1_MK1OriKgdkc01dO-0PPVO2bdcpXO_NKqgqVn73ws4c/edit?usp=sharing)
+[See General](GENERAL.md)
+
 ## DEVELOPMENT
 ### Pulling and Pushing from GitHub
 For the love of god, PLEASE stash your own changes before pulling... it makes merge errors so much nicer.
@@ -14,6 +16,7 @@ For the love of god, PLEASE stash your own changes before pulling... it makes me
 `git stash save && git pull --rebase && git stash pop`
 ### Coding Standards
 Just follow how the rest of the code looks.. most of it follows C#'s usual coding standards. E.g. Brackets are on separate lines (I know it sucks; that's how C# likes to do their brackets).
+
 ## HOW TO GET SETUP
 ### Visual Studio 2017
 Download Visual Studio Community from here: [Visual Studio](https://www.visualstudio.com/vs/)
