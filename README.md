@@ -49,3 +49,6 @@ Now follow these steps completely or you will not be able to compile the game.
 10. Add it as a reference and now right click `Nez (Portable)` and hit Build.
 11. The game should finally build! Hit the play button on the top.
 ## Complete List of Libraries and Credits for Assets
+1. Monogame 3.6
+1. Nez forked for Monogame 3.6 created by a certain `Robert Willis`.
+1. David created most prototype assets.
