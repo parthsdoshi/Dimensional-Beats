@@ -2,7 +2,18 @@
 ## Story and Mechanics and Other Links
 [Google Doc](https://docs.google.com/document/d/1_MK1OriKgdkc01dO-0PPVO2bdcpXO_NKqgqVn73ws4c/edit?usp=sharing)
 ## DEVELOPMENT
-### 
+### Pulling and Pushing from GitHub
+For the love of god, PLEASE stash your own changes before pulling... it makes merge errors so much nicer.
+#### GitKraken
+1. Click on your WIP in the home view of GitKraken.
+2. Click stash on the top.
+3. Click pull on the top.
+4. Click pop on the top.
+5. Deal with any remaining merge errors.
+#### Terminal or Git Shell or Powershell or Windows Subsystem for Linux (WSL) or whatever have you
+`git stash save && git pull --rebase && git stash pop`
+### Coding Standards
+Just follow how the rest of the code looks.. most of it follows C#'s usual coding standards. E.g. Brackets are on separate lines (I know it sucks; that's how C# likes to do their brackets).
 ## HOW TO GET SETUP
 ### Visual Studio 2017
 Download Visual Studio Community from here: [Visual Studio](https://www.visualstudio.com/vs/)
