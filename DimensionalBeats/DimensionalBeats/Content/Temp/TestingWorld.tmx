@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="100" height="100" tilewidth="16" tileheight="16" nextobjectid="10">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="100" height="100" tilewidth="16" tileheight="16" nextobjectid="11">
  <tileset firstgid="1" name="TestingSpriteSheet" tilewidth="16" tileheight="16" tilecount="100" columns="10">
   <image source="TestingSpriteSheet.png" trans="ff00ff" width="160" height="160"/>
   <tile id="0">
@@ -42,7 +42,8 @@
   </tile>
  </tileset>
  <objectgroup name="SpawnPoint">
-  <object id="1" name="Spawn" x="32.3333" y="1472" width="13" height="15"/>
+  <object id="1" name="Spawn" x="623.333" y="1534" width="13" height="15"/>
+  <object id="10" name="EnemySpawn" x="739" y="1553" width="10" height="13"/>
  </objectgroup>
  <layer name="Decorations" width="100" height="100" visible="0">
   <data encoding="csv">

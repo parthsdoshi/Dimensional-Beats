@@ -1,4 +1,6 @@
-﻿using DimensionalBeats.Helper;
+﻿using DimensionalBeats.Entities;
+using DimensionalBeats.Helper;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.AI.BehaviorTrees;
@@ -6,31 +8,45 @@ using Nez.AI.Pathfinding;
 using Nez.Sprites;
 using Nez.Textures;
 using Nez.Tiled;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DimensionalBeats.Controllers.Enemy_Controller {
     class EnemyController : Controller {
         enum Animations {
             RUN, IDLE
         }
-        protected WeightedGridGraph _grid;
-        protected BehaviorTree<EnemyController> _behaviorTree;
 
-        private PhysicsHandler _physicsHandler;
+        protected PhysicsHandler _physicsHandler;
 
         private BoxCollider _boxCollider;
-        private TiledMapMover _mover;
+        protected TiledMapMover _mover;
         public TiledMapMover.CollisionState collisionState { get; }
 
         private Sprite<Animations> _animations;
 
+        //Physics values
+        public float velocity { get; set; }
+        public float maxVelocity { get; set; }
+        protected float _jumpHeight { get; set; }
+
+        //Mob values
+        protected float _health { get; }
+        protected float _damage { get; }
+
+        //AI Stuff
+        protected WeightedGridGraph _grid;
+        protected BehaviorTree<EnemyController> _behaviorTree;
+        protected List<Point> _waypoints;
+        protected Point _origin;
+        protected int _currentWaypointIndex;
+        public Vector2 _dir { get; set; }
+        public CookieCutterEntity target;
+
         public EnemyController(TiledTileLayer collisionLayer) : base() {
             _grid = new WeightedGridGraph(collisionLayer);
-
+            this.collisionState = new TiledMapMover.CollisionState();
+            _dir = new Vector2();
+            maxVelocity = 1f;
         }
 
         public override void onAddedToEntity() {
@@ -40,6 +56,7 @@ namespace DimensionalBeats.Controllers.Enemy_Controller {
             _boxCollider = entity.getComponent<BoxCollider>();
             _mover = entity.getComponent<TiledMapMover>();
             _physicsHandler = entity.getComponent<PhysicsHandler>();
+            _physicsHandler.maxVelocity = this.maxVelocity;
         }
 
         public void loadContent() {
@@ -62,6 +79,16 @@ namespace DimensionalBeats.Controllers.Enemy_Controller {
                 subtextures[10],
                 subtextures[11]
             }));
+        }
+
+        public void move(Vector2 motion) {
+            if (motion != new Vector2() && !_animations.isAnimationPlaying(Animations.RUN)) _animations.play(Animations.RUN);
+            else if (motion == new Vector2() && !_animations.isAnimationPlaying(Animations.IDLE)) _animations.play(Animations.IDLE);
+            _mover.move(_physicsHandler.calculateMovement(motion), _boxCollider, collisionState);
+        }
+
+        public void flipSprite(bool flip) {
+            _animations.flipX = flip;
         }
     }
 }

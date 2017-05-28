@@ -7,6 +7,7 @@ using Nez;
 using Nez.Tiled;
 using Nez.Sprites;
 using Microsoft.Xna.Framework.Graphics;
+using DimensionalBeats.Controllers.Enemy_Controller;
 
 namespace DimensionalBeats.Scenes
 {
@@ -39,6 +40,7 @@ namespace DimensionalBeats.Scenes
             mapComponent.setRenderLayer(2);
             tiledEntity.addComponent(mapComponent);
 
+            #region SpawnPlayer
             //Create player Entity
             CookieCutterEntity player = new CookieCutterEntity("Player", spawn.position, ref playerSprite, playerController);
 
@@ -57,6 +59,30 @@ namespace DimensionalBeats.Scenes
             Flags.setFlagExclusive(ref collider.physicsLayer, 1);
 
             this.addEntity<Entity> (player);
+            #endregion
+
+            #region SpawnAI
+            //Initialize EnemyController
+            EnemyMeleeController enemy = new EnemyMeleeController(map.getLayer<TiledTileLayer>("Ground"));
+            Sprite enemySprite = new Sprite(content.Load<Texture2D>("Temp/TestPlayerAnimationFiles/Idle/Idle_1"));
+            enemySprite.setRenderLayer(1);
+            TiledObject enemySpawn = map.getObjectGroup("SpawnPoint").objectWithName("EnemySpawn");
+            CookieCutterEntity enemyEntity = new CookieCutterEntity("Enemy", enemySpawn.position, ref enemySprite, enemy);
+
+            //Add collision layers
+            BoxCollider enemyCollider = new BoxCollider(-enemySprite.width / 2, -enemySprite.height / 2, enemySprite.width, enemySprite.height);
+            enemy.addComponent<TiledMapMover>(new TiledMapMover(map.getLayer<TiledTileLayer>("Ground")));
+            enemy.addComponent<BoxCollider>(enemyCollider);
+            enemy.addComponent<PhysicsHandler>(new PhysicsHandler(enemyEntity, enemy.collisionState, 20f, .5f));
+            Flags.setFlagExclusive(ref enemyCollider.collidesWithLayers, 0); //Prevent collisions with projectiles
+            Flags.setFlagExclusive(ref enemyCollider.physicsLayer, 1);
+
+            //Add target
+            enemy.target = player;
+
+            this.addEntity<Entity>(enemyEntity);
+            #endregion
+
         }
 
         
